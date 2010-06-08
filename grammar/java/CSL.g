@@ -1,7 +1,6 @@
 grammar CSL;
 
 options {
-    language=Python;
     output=AST;
 }
 
@@ -9,7 +8,13 @@ tokens
 {
    EVAL;
    VAR;
+   LANGUAGE;
 }
+
+@lexer::header{package org.tykedog.csl.parser;}
+@parser::header{package org.tykedog.csl.parser;}
+
+language:	statement* -> ^(LANGUAGE statement*);
 
 statement
 	:	
