@@ -6,63 +6,92 @@ options {
 
 tokens
 {
-   EVAL;
+   FUNCTION;
    VAR;
+   PARAM;
+   INVOKE;
    LANGUAGE;
 }
 
 @lexer::header{package org.tykedog.csl.parser;}
 @parser::header{package org.tykedog.csl.parser;}
 
-language:	statement* -> ^(LANGUAGE statement*);
+language:	function* -> ^(LANGUAGE function*);
+
+function	:	'def' ID '('var*')' '{' statement* '}' -> ^(FUNCTION ID var* statement*);
 
 statement
 	:	
 	block 
-	| 'if' ifExpr=logicExpression ifBlock=block ('elif' elifExpr=logicExpression elifBlock=block)* ('else' elseBlock=block)?
+	| 'if' ifExpr=expression ifBlock=block ('elif' elifExpr=expression elifBlock=block)* ('else' elseBlock=block)?
 	 -> ^('if' $ifExpr $ifBlock ^('elif' $elifExpr $elifBlock)* ^('else' $elseBlock)?)
-	| 'while'^ logicExpression block
-	|  evalExpression ';'!
-	|  assignExpression ';'!
+	| 'while'^ expression block
+	| 'break' ';'!
+	| 'continue' ';'!
+	|  expression ';'!
 	;
 	
-block	:	'{' statement* '}' -> ^('{' statement*);
+block	:	'{'! statement* '}'!;
 
-evalExpression
-	:	ID params -> ^(EVAL ID params);
-
-param 	:	var|literal;
-params 	:	param*;
 	
-assignExpression
-	:	var '='^ (var | evalExpression);
-
-parLogicExpression
-	:	'('! logicExpression ')'!
+expression
+	:	conditionalExpression ('='^ expression)?
 	;
 
-logicExpression
-	:	atomLogicExpression (LogicJoinOperator^ logicExpression)?;
-
-atomLogicExpression
-	:	(leftOperand LogicCompareOperator^ rightOperand)
-	| parLogicExpression;
-
-leftOperand
-	:	var;
-
-rightOperand
-	:	param;
-
-
-LogicCompareOperator
-	:	('==' | '!=' | '~=' | '>' | '<' | '>=' | '<=')
+conditionalExpression
+    :   conditionalOrExpression ( '?'^ expression ':'! expression )?
 	;
-LogicJoinOperator
-	:	'&&'|'||';
 
-var	:	('$'ID ->^(VAR ID)) 
-                | ('$'ID'['param']' -> ^(VAR ID param));
+conditionalOrExpression
+    :   conditionalAndExpression ( '||'^ conditionalAndExpression )*
+	;
+
+conditionalAndExpression
+    :   equalityExpression ( '&&'^ equalityExpression )*
+	;
+
+equalityExpression
+    :   relationalExpression ( ('=='^ | '!='^ | '~='^) relationalExpression )*
+	;
+
+relationalExpression
+    :   additiveExpression ( relationalOp^ additiveExpression )*
+	;
+	
+relationalOp
+	:	('<' '=' | '>' '=' | '<' | '>')
+	;
+
+additiveExpression
+    :   multiplicativeExpression ( ('+'^ | '-'^) multiplicativeExpression )*
+	;
+
+multiplicativeExpression
+    :   unaryExpression ( ( '*'^ | '/'^ | '%'^ ) unaryExpression )*
+	;
+	
+unaryExpression
+    :   '+'^ unaryExpression
+    |	'-'^ unaryExpression
+    |   '++' unaryExpression ->^('++' unaryExpression )
+    |   '--' unaryExpression ->^('--' unaryExpression )
+    |   '!'^ unaryExpression
+    |   topExpression 
+    ;
+
+topExpression	
+    :
+    '('! expression ')'! 
+    | ID param* -> ^(INVOKE ID param*)
+    | literal
+    | var;
+
+param	:	var ->^(PARAM var)
+                | ID -> ^(PARAM ID)
+                | literal ->^(PARAM literal)
+	;
+		
+var	:	'$'ID -> ^(VAR ID);
 
 
 literal	
@@ -80,7 +109,6 @@ IntegerLiteral
     |   OctalLiteral
     |   DecimalLiteral
     ;
-
 
 booleanLiteral
     :   'true'
