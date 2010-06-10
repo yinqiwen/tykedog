@@ -10,11 +10,16 @@ options{
 package org.tykedog.csl.parser;
 import org.tykedog.csl.interpreter.expression.*;
 import org.tykedog.csl.interpreter.statement.*;
+import org.tykedog.csl.interpreter.function.*;
+import org.tykedog.csl.interpreter.*;
 }
 
 language : ^(LANGUAGE function*);
 
-function:	^(FUNCTION ID ^(PARAM (^(VAR ID))*) statement*);
+function returns [Function func]
+@init {func = new Function();}
+:	
+  ^(FUNCTION ID{func.setName($ID.text);} ^(PARAM (VAR{func.addArg($VAR.text);})*)  (s=statement{func.addStatment(s);})*);
 
 statement returns[Statement stat]
 @init {List<Statement> sl = new ArrayList<Statement>();}
@@ -22,8 +27,7 @@ statement returns[Statement stat]
     ^('{' (s=statement{sl.add(s);})*) 
     
     {
-       BlockStatement block = new BlockStatement();
-         
+       BlockStatement block = new BlockStatement(sl);
     }
     |^('if' expression statement (^('elif' expression statement))* (^('else' statement))?) 
     |^('for' expression expression statement)
@@ -39,7 +43,7 @@ expression returns[Expression expr]
 	:	
 	^('=' opra=expression oprb=expression)
 	{
-	   $expr = new AssignExpression(opra, oprb);
+	   $expr = new AssignExpression(opra, oprb, opra.getLine());
 	}
 	|^('+=' opra=expression oprb=expression)
 	{
@@ -66,6 +70,9 @@ expression returns[Expression expr]
 	|^('++' expression )
 	|^('--' expression )
 	|^(VAR ID)
+	{
+	   $expr = new VarExpression($ID.text, $ID.line);
+	}
 	|^(INVOKE ID expression*)
 	|IntegerLiteral
         |FloatingPointLiteral

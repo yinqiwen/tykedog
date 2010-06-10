@@ -14,6 +14,17 @@ package org.tykedog.csl.interpreter.expression;
  */
 public abstract class Expression
 {
+	protected int line;
+	
+	protected Expression(int line)
+	{
+		this.line = line;
+	}
+	
+	public int getLine()
+	{
+		return line;
+	}
 	
 	public abstract Object execute();
 }
