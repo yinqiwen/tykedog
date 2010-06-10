@@ -1,0 +1,9 @@
+
+if($__URL__=="sasag" || $__METHOD__ == "GET")
+{
+   set proxy 
+}
+elif($__HEADER__[])
+{
+  set proxy
+}
