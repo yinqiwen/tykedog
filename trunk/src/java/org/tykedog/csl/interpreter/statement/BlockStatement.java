@@ -9,14 +9,28 @@
  */
 package org.tykedog.csl.interpreter.statement;
 
+import java.util.List;
+
 /**
  *
  */
 public class BlockStatement extends Statement
 {
-	
-	public void addStatement(Statement s)
+	public BlockStatement(List<Statement> sl)
 	{
-		
+		this.sl = sl;
 	}
+
+	private List<Statement> sl;
+
+	@Override
+	public void execute()
+	{
+		for(Statement s:sl)
+		{
+			s.execute();
+		}	
+	}
+	
+
 }

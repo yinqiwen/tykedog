@@ -14,13 +14,12 @@ package org.tykedog.csl.interpreter.expression;
  */
 public class AssignExpression extends Expression
 {
-	
-
 	private Expression opra;
 	private Expression oprb;
 	
-	public AssignExpression(Expression opra, Expression oprb)
+	public AssignExpression(Expression opra, Expression oprb, int line)
 	{
+		super(line);
 		this.opra = opra;
 		this.oprb = oprb;
 	}

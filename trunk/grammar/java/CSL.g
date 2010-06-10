@@ -8,7 +8,6 @@ options {
 tokens
 {
    FUNCTION;
-   VAR;
    PARAM;
    INVOKE;
    LANGUAGE;
@@ -21,7 +20,7 @@ language:	function* -> ^(LANGUAGE function*);
 
 function	:	'def' ID param '{' statement* '}' -> ^(FUNCTION ID param statement*); 
 
-param	:	'('(var(','var)*)?')' -> ^(PARAM var*);
+param	:	'('(VAR(','VAR)*)?')' -> ^(PARAM VAR*);
 
 statement
 	:	
@@ -88,7 +87,7 @@ topExpression
     '('! expression ')'! 
     | ID arguments -> ^(INVOKE ID arguments)
     | literal
-    | var;
+    | VAR;
 	
 arguments
 	:	'('! expressionList? ')'!
@@ -99,7 +98,7 @@ expressionList
     :   expression (',' expression)* ->expression+
     ;
 	
-var	:	'$'ID -> ^(VAR ID);
+VAR	:	'$'ID ;
 
 
 literal	

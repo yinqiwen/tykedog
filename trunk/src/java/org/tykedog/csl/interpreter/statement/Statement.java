@@ -14,5 +14,5 @@ package org.tykedog.csl.interpreter.statement;
  */
 public abstract class Statement
 {
-
+	public abstract void execute();
 }

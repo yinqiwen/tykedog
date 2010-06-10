@@ -14,11 +14,11 @@ package org.tykedog.csl.interpreter.expression;
  */
 public class VarExpression extends Expression
 {
-
 	private String id;
 	
-	public VarExpression(String id)
+	public VarExpression(String id, int line)
 	{
+		super(line);
 		this.id = id;
 	}
 	
