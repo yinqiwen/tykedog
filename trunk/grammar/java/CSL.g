@@ -2,6 +2,7 @@ grammar CSL;
 
 options {
     output=AST;
+    backtrack=true; 
 }
 
 tokens
@@ -18,7 +19,9 @@ tokens
 
 language:	function* -> ^(LANGUAGE function*);
 
-function	:	'def' ID '('var*')' '{' statement* '}' -> ^(FUNCTION ID var* statement*);
+function	:	'def' ID param '{' statement* '}' -> ^(FUNCTION ID param statement*); 
+
+param	:	'('(var(','var)*)?')' -> ^(PARAM var*);
 
 statement
 	:	
@@ -28,10 +31,11 @@ statement
 	| 'while'^ expression block
 	| 'break' ';'!
 	| 'continue' ';'!
+	| 'return' ';'!
 	|  expression ';'!
 	;
 	
-block	:	'{'! statement* '}'!;
+block	:	'{' statement* '}' -> ^('{' statement*);
 
 	
 expression
@@ -82,15 +86,19 @@ unaryExpression
 topExpression	
     :
     '('! expression ')'! 
-    | ID param* -> ^(INVOKE ID param*)
+    | ID arguments -> ^(INVOKE ID arguments)
     | literal
     | var;
-
-param	:	var ->^(PARAM var)
-                | ID -> ^(PARAM ID)
-                | literal ->^(PARAM literal)
+	
+arguments
+	:	'('! expressionList? ')'!
 	;
-		
+
+
+expressionList
+    :   expression (',' expression)* ->expression+
+    ;
+	
 var	:	'$'ID -> ^(VAR ID);
 
 
