@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g 2010-06-10 21:45:48
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g 2010-06-11 14:43:54
 
 package org.tykedog.csl.parser;
 import org.tykedog.csl.interpreter.expression.*;
@@ -14,11 +14,10 @@ import java.util.ArrayList;
 
 public class TreeCSL extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "FUNCTION", "PARAM", "INVOKE", "LANGUAGE", "ID", "VAR", "IntegerLiteral", "FloatingPointLiteral", "CharacterLiteral", "StringLiteral", "HexLiteral", "OctalLiteral", "DecimalLiteral", "HexDigit", "EscapeSequence", "Exponent", "UnicodeEscape", "OctalEscape", "Letter", "NEWLINE", "WS", "COMMENT", "LINE_COMMENT", "'def'", "'{'", "'}'", "'('", "','", "')'", "'if'", "'elif'", "'else'", "'while'", "'break'", "';'", "'continue'", "'return'", "'='", "'?'", "':'", "'||'", "'&&'", "'=='", "'!='", "'~='", "'<'", "'>'", "'+'", "'-'", "'*'", "'/'", "'%'", "'++'", "'--'", "'!'", "'null'", "'true'", "'false'", "'for'", "'+='", "'-='", "'*='", "'/='", "'%='", "'>='", "'<='"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "FUNCTION", "PARAM", "INVOKE", "LANGUAGE", "ID", "VAR", "IntegerLiteral", "FloatingPointLiteral", "CharacterLiteral", "StringLiteral", "HexLiteral", "OctalLiteral", "DecimalLiteral", "HexDigit", "EscapeSequence", "Exponent", "UnicodeEscape", "OctalEscape", "Letter", "NEWLINE", "WS", "COMMENT", "LINE_COMMENT", "'def'", "'{'", "'}'", "'('", "','", "')'", "'if'", "'elif'", "'else'", "'while'", "'break'", "';'", "'continue'", "'return'", "'='", "'?'", "':'", "'||'", "'&&'", "'=='", "'!='", "'~='", "'<'", "'>'", "'+'", "'-'", "'*'", "'/'", "'%'", "'++'", "'--'", "'!'", "'null'", "'true'", "'false'", "'+='", "'-='", "'*='", "'/='", "'%='", "'>='", "'<='"
     };
     public static final int T__68=68;
     public static final int FUNCTION=4;
-    public static final int T__69=69;
     public static final int T__66=66;
     public static final int T__67=67;
     public static final int T__64=64;
@@ -98,38 +97,38 @@ public class TreeCSL extends TreeParser {
         
 
     public String[] getTokenNames() { return TreeCSL.tokenNames; }
-    public String getGrammarFileName() { return "F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g"; }
+    public String getGrammarFileName() { return "D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g"; }
 
 
 
     // $ANTLR start "language"
-    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:17:1: language : ^( LANGUAGE ( function )* ) ;
+    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:17:1: language : ^( LANGUAGE ( statement )* ( function )* ) ;
     public final void language() throws RecognitionException {
         try {
-            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:17:10: ( ^( LANGUAGE ( function )* ) )
-            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:17:12: ^( LANGUAGE ( function )* )
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:17:10: ( ^( LANGUAGE ( statement )* ( function )* ) )
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:17:12: ^( LANGUAGE ( statement )* ( function )* )
             {
             match(input,LANGUAGE,FOLLOW_LANGUAGE_in_language43); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:17:23: ( function )*
+                // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:17:23: ( statement )*
                 loop1:
                 do {
                     int alt1=2;
                     int LA1_0 = input.LA(1);
 
-                    if ( (LA1_0==FUNCTION) ) {
+                    if ( (LA1_0==INVOKE||(LA1_0>=VAR && LA1_0<=StringLiteral)||LA1_0==28||LA1_0==33||(LA1_0>=36 && LA1_0<=37)||(LA1_0>=39 && LA1_0<=41)||(LA1_0>=44 && LA1_0<=68)) ) {
                         alt1=1;
                     }
 
 
                     switch (alt1) {
                 	case 1 :
-                	    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:17:23: function
+                	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:17:23: statement
                 	    {
-                	    pushFollow(FOLLOW_function_in_language45);
-                	    function();
+                	    pushFollow(FOLLOW_statement_in_language45);
+                	    statement();
 
                 	    state._fsp--;
 
@@ -139,6 +138,35 @@ public class TreeCSL extends TreeParser {
 
                 	default :
                 	    break loop1;
+                    }
+                } while (true);
+
+                // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:17:34: ( function )*
+                loop2:
+                do {
+                    int alt2=2;
+                    int LA2_0 = input.LA(1);
+
+                    if ( (LA2_0==FUNCTION) ) {
+                        alt2=1;
+                    }
+
+
+                    switch (alt2) {
+                	case 1 :
+                	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:17:34: function
+                	    {
+                	    pushFollow(FOLLOW_function_in_language48);
+                	    function();
+
+                	    state._fsp--;
+
+
+                	    }
+                	    break;
+
+                	default :
+                	    break loop2;
                     }
                 } while (true);
 
@@ -161,7 +189,7 @@ public class TreeCSL extends TreeParser {
 
 
     // $ANTLR start "function"
-    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:19:1: function returns [Function func] : ^( FUNCTION ID ^( PARAM ( VAR )* ) (s= statement )* ) ;
+    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:19:1: function returns [Function func] : ^( FUNCTION ID ^( PARAM ( VAR )* ) (s= statement )* ) ;
     public final Function function() throws RecognitionException {
         Function func = null;
 
@@ -172,63 +200,63 @@ public class TreeCSL extends TreeParser {
 
         func = new Function();
         try {
-            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:21:1: ( ^( FUNCTION ID ^( PARAM ( VAR )* ) (s= statement )* ) )
-            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:22:3: ^( FUNCTION ID ^( PARAM ( VAR )* ) (s= statement )* )
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:21:1: ( ^( FUNCTION ID ^( PARAM ( VAR )* ) (s= statement )* ) )
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:22:3: ^( FUNCTION ID ^( PARAM ( VAR )* ) (s= statement )* )
             {
-            match(input,FUNCTION,FOLLOW_FUNCTION_in_function68); 
+            match(input,FUNCTION,FOLLOW_FUNCTION_in_function71); 
 
             match(input, Token.DOWN, null); 
-            ID1=(CommonTree)match(input,ID,FOLLOW_ID_in_function70); 
+            ID1=(CommonTree)match(input,ID,FOLLOW_ID_in_function73); 
             func.setName((ID1!=null?ID1.getText():null));
-            match(input,PARAM,FOLLOW_PARAM_in_function74); 
+            match(input,PARAM,FOLLOW_PARAM_in_function77); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:22:50: ( VAR )*
-                loop2:
+                // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:22:50: ( VAR )*
+                loop3:
                 do {
-                    int alt2=2;
-                    int LA2_0 = input.LA(1);
+                    int alt3=2;
+                    int LA3_0 = input.LA(1);
 
-                    if ( (LA2_0==VAR) ) {
-                        alt2=1;
+                    if ( (LA3_0==VAR) ) {
+                        alt3=1;
                     }
 
 
-                    switch (alt2) {
+                    switch (alt3) {
                 	case 1 :
-                	    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:22:51: VAR
+                	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:22:51: VAR
                 	    {
-                	    VAR2=(CommonTree)match(input,VAR,FOLLOW_VAR_in_function77); 
+                	    VAR2=(CommonTree)match(input,VAR,FOLLOW_VAR_in_function80); 
                 	    func.addArg((VAR2!=null?VAR2.getText():null));
 
                 	    }
                 	    break;
 
                 	default :
-                	    break loop2;
+                	    break loop3;
                     }
                 } while (true);
 
 
                 match(input, Token.UP, null); 
             }
-            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:22:84: (s= statement )*
-            loop3:
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:22:84: (s= statement )*
+            loop4:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( (LA3_0==INVOKE||(LA3_0>=VAR && LA3_0<=StringLiteral)||LA3_0==28||LA3_0==33||(LA3_0>=36 && LA3_0<=37)||(LA3_0>=39 && LA3_0<=41)||(LA3_0>=44 && LA3_0<=69)) ) {
-                    alt3=1;
+                if ( (LA4_0==INVOKE||(LA4_0>=VAR && LA4_0<=StringLiteral)||LA4_0==28||LA4_0==33||(LA4_0>=36 && LA4_0<=37)||(LA4_0>=39 && LA4_0<=41)||(LA4_0>=44 && LA4_0<=68)) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt4) {
             	case 1 :
-            	    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:22:85: s= statement
+            	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:22:85: s= statement
             	    {
-            	    pushFollow(FOLLOW_statement_in_function87);
+            	    pushFollow(FOLLOW_statement_in_function90);
             	    s=statement();
 
             	    state._fsp--;
@@ -239,7 +267,7 @@ public class TreeCSL extends TreeParser {
             	    break;
 
             	default :
-            	    break loop3;
+            	    break loop4;
                 }
             } while (true);
 
@@ -261,17 +289,16 @@ public class TreeCSL extends TreeParser {
 
 
     // $ANTLR start "statement"
-    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:24:1: statement returns [Statement stat] : ( ^( '{' (s= statement )* ) | ^( 'if' expression statement ( ^( 'elif' expression statement ) )* ( ^( 'else' statement ) )? ) | ^( 'for' expression expression statement ) | ^( 'while' expression statement ) | 'return' | 'break' | 'continue' | expression );
+    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:24:1: statement returns [Statement stat] : ( block | ^( 'if' expression[stat] block ( ^( 'elif' expression[stat] block ) )* ( ^( 'else' block ) )? ) | ^( 'while' expression[stat] block ) | 'return' | 'break' | 'continue' | expression[stat] );
     public final Statement statement() throws RecognitionException {
         Statement stat = null;
 
-        Statement s = null;
+        BlockStatement block3 = null;
 
 
-        List<Statement> sl = new ArrayList<Statement>();
         try {
-            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:26:2: ( ^( '{' (s= statement )* ) | ^( 'if' expression statement ( ^( 'elif' expression statement ) )* ( ^( 'else' statement ) )? ) | ^( 'for' expression expression statement ) | ^( 'while' expression statement ) | 'return' | 'break' | 'continue' | expression )
-            int alt7=8;
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:25:2: ( block | ^( 'if' expression[stat] block ( ^( 'elif' expression[stat] block ) )* ( ^( 'else' block ) )? ) | ^( 'while' expression[stat] block ) | 'return' | 'break' | 'continue' | expression[stat] )
+            int alt7=7;
             switch ( input.LA(1) ) {
             case 28:
                 {
@@ -283,29 +310,24 @@ public class TreeCSL extends TreeParser {
                 alt7=2;
                 }
                 break;
-            case 62:
+            case 36:
                 {
                 alt7=3;
                 }
                 break;
-            case 36:
+            case 40:
                 {
                 alt7=4;
                 }
                 break;
-            case 40:
+            case 37:
                 {
                 alt7=5;
                 }
                 break;
-            case 37:
-                {
-                alt7=6;
-                }
-                break;
             case 39:
                 {
-                alt7=7;
+                alt7=6;
                 }
                 break;
             case INVOKE:
@@ -333,15 +355,15 @@ public class TreeCSL extends TreeParser {
             case 59:
             case 60:
             case 61:
+            case 62:
             case 63:
             case 64:
             case 65:
             case 66:
             case 67:
             case 68:
-            case 69:
                 {
-                alt7=8;
+                alt7=7;
                 }
                 break;
             default:
@@ -353,68 +375,34 @@ public class TreeCSL extends TreeParser {
 
             switch (alt7) {
                 case 1 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:27:5: ^( '{' (s= statement )* )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:26:5: block
                     {
-                    match(input,28,FOLLOW_28_in_statement114); 
+                    pushFollow(FOLLOW_block_in_statement111);
+                    block3=block();
 
-                    if ( input.LA(1)==Token.DOWN ) {
-                        match(input, Token.DOWN, null); 
-                        // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:27:11: (s= statement )*
-                        loop4:
-                        do {
-                            int alt4=2;
-                            int LA4_0 = input.LA(1);
+                    state._fsp--;
 
-                            if ( (LA4_0==INVOKE||(LA4_0>=VAR && LA4_0<=StringLiteral)||LA4_0==28||LA4_0==33||(LA4_0>=36 && LA4_0<=37)||(LA4_0>=39 && LA4_0<=41)||(LA4_0>=44 && LA4_0<=69)) ) {
-                                alt4=1;
-                            }
-
-
-                            switch (alt4) {
-                        	case 1 :
-                        	    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:27:12: s= statement
-                        	    {
-                        	    pushFollow(FOLLOW_statement_in_statement119);
-                        	    s=statement();
-
-                        	    state._fsp--;
-
-                        	    sl.add(s);
-
-                        	    }
-                        	    break;
-
-                        	default :
-                        	    break loop4;
-                            }
-                        } while (true);
-
-
-                        match(input, Token.UP, null); 
-                    }
-
-                           BlockStatement block = new BlockStatement(sl);
-                        
+                    stat = block3;
 
                     }
                     break;
                 case 2 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:32:6: ^( 'if' expression statement ( ^( 'elif' expression statement ) )* ( ^( 'else' statement ) )? )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:27:6: ^( 'if' expression[stat] block ( ^( 'elif' expression[stat] block ) )* ( ^( 'else' block ) )? )
                     {
-                    match(input,33,FOLLOW_33_in_statement143); 
+                    match(input,33,FOLLOW_33_in_statement120); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_statement145);
-                    expression();
+                    pushFollow(FOLLOW_expression_in_statement122);
+                    expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_statement_in_statement147);
-                    statement();
+                    pushFollow(FOLLOW_block_in_statement125);
+                    block();
 
                     state._fsp--;
 
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:32:34: ( ^( 'elif' expression statement ) )*
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:27:36: ( ^( 'elif' expression[stat] block ) )*
                     loop5:
                     do {
                         int alt5=2;
@@ -427,18 +415,18 @@ public class TreeCSL extends TreeParser {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:32:35: ^( 'elif' expression statement )
+                    	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:27:37: ^( 'elif' expression[stat] block )
                     	    {
-                    	    match(input,34,FOLLOW_34_in_statement151); 
+                    	    match(input,34,FOLLOW_34_in_statement129); 
 
                     	    match(input, Token.DOWN, null); 
-                    	    pushFollow(FOLLOW_expression_in_statement153);
-                    	    expression();
+                    	    pushFollow(FOLLOW_expression_in_statement131);
+                    	    expression(stat);
 
                     	    state._fsp--;
 
-                    	    pushFollow(FOLLOW_statement_in_statement155);
-                    	    statement();
+                    	    pushFollow(FOLLOW_block_in_statement134);
+                    	    block();
 
                     	    state._fsp--;
 
@@ -453,7 +441,7 @@ public class TreeCSL extends TreeParser {
                         }
                     } while (true);
 
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:32:68: ( ^( 'else' statement ) )?
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:27:72: ( ^( 'else' block ) )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -462,13 +450,13 @@ public class TreeCSL extends TreeParser {
                     }
                     switch (alt6) {
                         case 1 :
-                            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:32:69: ^( 'else' statement )
+                            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:27:73: ^( 'else' block )
                             {
-                            match(input,35,FOLLOW_35_in_statement162); 
+                            match(input,35,FOLLOW_35_in_statement141); 
 
                             match(input, Token.DOWN, null); 
-                            pushFollow(FOLLOW_statement_in_statement164);
-                            statement();
+                            pushFollow(FOLLOW_block_in_statement143);
+                            block();
 
                             state._fsp--;
 
@@ -486,23 +474,18 @@ public class TreeCSL extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:33:6: ^( 'for' expression expression statement )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:28:7: ^( 'while' expression[stat] block )
                     {
-                    match(input,62,FOLLOW_62_in_statement177); 
+                    match(input,36,FOLLOW_36_in_statement157); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_statement179);
-                    expression();
+                    pushFollow(FOLLOW_expression_in_statement159);
+                    expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_statement181);
-                    expression();
-
-                    state._fsp--;
-
-                    pushFollow(FOLLOW_statement_in_statement183);
-                    statement();
+                    pushFollow(FOLLOW_block_in_statement162);
+                    block();
 
                     state._fsp--;
 
@@ -512,52 +495,31 @@ public class TreeCSL extends TreeParser {
                     }
                     break;
                 case 4 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:34:7: ^( 'while' expression statement )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:29:7: 'return'
                     {
-                    match(input,36,FOLLOW_36_in_statement193); 
-
-                    match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_statement195);
-                    expression();
-
-                    state._fsp--;
-
-                    pushFollow(FOLLOW_statement_in_statement197);
-                    statement();
-
-                    state._fsp--;
-
-
-                    match(input, Token.UP, null); 
+                    match(input,40,FOLLOW_40_in_statement172); 
 
                     }
                     break;
                 case 5 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:35:7: 'return'
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:30:7: 'break'
                     {
-                    match(input,40,FOLLOW_40_in_statement207); 
+                    match(input,37,FOLLOW_37_in_statement180); 
 
                     }
                     break;
                 case 6 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:36:7: 'break'
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:31:7: 'continue'
                     {
-                    match(input,37,FOLLOW_37_in_statement215); 
+                    match(input,39,FOLLOW_39_in_statement188); 
 
                     }
                     break;
                 case 7 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:37:7: 'continue'
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:32:7: expression[stat]
                     {
-                    match(input,39,FOLLOW_39_in_statement223); 
-
-                    }
-                    break;
-                case 8 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:38:7: expression
-                    {
-                    pushFollow(FOLLOW_expression_in_statement231);
-                    expression();
+                    pushFollow(FOLLOW_expression_in_statement196);
+                    expression(stat);
 
                     state._fsp--;
 
@@ -578,202 +540,279 @@ public class TreeCSL extends TreeParser {
     // $ANTLR end "statement"
 
 
+    // $ANTLR start "block"
+    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:35:1: block returns [BlockStatement stat] : ^( '{' (s= statement )* ) ;
+    public final BlockStatement block() throws RecognitionException {
+        BlockStatement stat = null;
+
+        Statement s = null;
+
+
+
+        List<Statement> sl = new ArrayList<Statement>();
+        stat = new BlockStatement(sl);
+
+        try {
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:40:2: ( ^( '{' (s= statement )* ) )
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:41:2: ^( '{' (s= statement )* )
+            {
+            match(input,28,FOLLOW_28_in_block219); 
+
+            if ( input.LA(1)==Token.DOWN ) {
+                match(input, Token.DOWN, null); 
+                // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:41:8: (s= statement )*
+                loop8:
+                do {
+                    int alt8=2;
+                    int LA8_0 = input.LA(1);
+
+                    if ( (LA8_0==INVOKE||(LA8_0>=VAR && LA8_0<=StringLiteral)||LA8_0==28||LA8_0==33||(LA8_0>=36 && LA8_0<=37)||(LA8_0>=39 && LA8_0<=41)||(LA8_0>=44 && LA8_0<=68)) ) {
+                        alt8=1;
+                    }
+
+
+                    switch (alt8) {
+                	case 1 :
+                	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:41:9: s= statement
+                	    {
+                	    pushFollow(FOLLOW_statement_in_block224);
+                	    s=statement();
+
+                	    state._fsp--;
+
+                	    sl.add(s);
+
+                	    }
+                	    break;
+
+                	default :
+                	    break loop8;
+                    }
+                } while (true);
+
+
+                match(input, Token.UP, null); 
+            }
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return stat;
+    }
+    // $ANTLR end "block"
+
+
     // $ANTLR start "expression"
-    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:42:1: expression returns [Expression expr] : ( ^( '=' opra= expression oprb= expression ) | ^( '+=' opra= expression oprb= expression ) | ^( '-=' opra= expression oprb= expression ) | ^( '*=' opra= expression oprb= expression ) | ^( '/=' opra= expression oprb= expression ) | ^( '%=' opra= expression oprb= expression ) | ^( '||' opra= expression oprb= expression ) | ^( '&&' opra= expression oprb= expression ) | ^( '+' opra= expression oprb= expression ) | ^( '-' opra= expression oprb= expression ) | ^( '*' opra= expression oprb= expression ) | ^( '/' opra= expression oprb= expression ) | ^( '%' opra= expression oprb= expression ) | ^( '==' opra= expression oprb= expression ) | ^( '~=' opra= expression oprb= expression ) | ^( '!=' opra= expression oprb= expression ) | ^( '>=' opra= expression oprb= expression ) | ^( '<=' opra= expression oprb= expression ) | ^( '<' opra= expression oprb= expression ) | ^( '>' opra= expression oprb= expression ) | ^( '!' expression ) | ^( '++' expression ) | ^( '--' expression ) | ^( VAR ID ) | ^( INVOKE ID ( expression )* ) | IntegerLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | 'true' | 'false' | 'null' );
-    public final Expression expression() throws RecognitionException {
+    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:43:1: expression[Statement stat] returns [Expression expr] : ( ^( '=' opra= expression[stat] oprb= expression[stat] ) | ^( '+=' opra= expression[stat] oprb= expression[stat] ) | ^( '-=' opra= expression[stat] oprb= expression[stat] ) | ^( '*=' opra= expression[stat] oprb= expression[stat] ) | ^( '/=' opra= expression[stat] oprb= expression[stat] ) | ^( '%=' opra= expression[stat] oprb= expression[stat] ) | ^( '||' opra= expression[stat] oprb= expression[stat] ) | ^( '&&' opra= expression[stat] oprb= expression[stat] ) | ^( '+' opra= expression[stat] oprb= expression[stat] ) | ^( '-' opra= expression[stat] oprb= expression[stat] ) | ^( '*' opra= expression[stat] oprb= expression[stat] ) | ^( '/' opra= expression[stat] oprb= expression[stat] ) | ^( '%' opra= expression[stat] oprb= expression[stat] ) | ^( '==' opra= expression[stat] oprb= expression[stat] ) | ^( '~=' opra= expression[stat] oprb= expression[stat] ) | ^( '!=' opra= expression[stat] oprb= expression[stat] ) | ^( '>=' opra= expression[stat] oprb= expression[stat] ) | ^( '<=' opra= expression[stat] oprb= expression[stat] ) | ^( '<' opra= expression[stat] oprb= expression[stat] ) | ^( '>' opra= expression[stat] oprb= expression[stat] ) | ^( '!' opr= expression[stat] ) | ^( '++' opr= expression[stat] ) | ^( '--' opr= expression[stat] ) | ^( VAR ID ) | ^( INVOKE ID (opr= expression[stat] )* ) | IntegerLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | token= 'true' | token= 'false' | token= 'null' );
+    public final Expression expression(Statement stat) throws RecognitionException {
         Expression expr = null;
 
-        CommonTree ID3=null;
+        CommonTree token=null;
+        CommonTree ID4=null;
+        CommonTree ID5=null;
+        CommonTree IntegerLiteral6=null;
+        CommonTree FloatingPointLiteral7=null;
+        CommonTree CharacterLiteral8=null;
+        CommonTree StringLiteral9=null;
         Expression opra = null;
 
         Expression oprb = null;
 
+        Expression opr = null;
 
+
+        List<Expression> exprList = new ArrayList<Expression>();
         try {
-            // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:43:2: ( ^( '=' opra= expression oprb= expression ) | ^( '+=' opra= expression oprb= expression ) | ^( '-=' opra= expression oprb= expression ) | ^( '*=' opra= expression oprb= expression ) | ^( '/=' opra= expression oprb= expression ) | ^( '%=' opra= expression oprb= expression ) | ^( '||' opra= expression oprb= expression ) | ^( '&&' opra= expression oprb= expression ) | ^( '+' opra= expression oprb= expression ) | ^( '-' opra= expression oprb= expression ) | ^( '*' opra= expression oprb= expression ) | ^( '/' opra= expression oprb= expression ) | ^( '%' opra= expression oprb= expression ) | ^( '==' opra= expression oprb= expression ) | ^( '~=' opra= expression oprb= expression ) | ^( '!=' opra= expression oprb= expression ) | ^( '>=' opra= expression oprb= expression ) | ^( '<=' opra= expression oprb= expression ) | ^( '<' opra= expression oprb= expression ) | ^( '>' opra= expression oprb= expression ) | ^( '!' expression ) | ^( '++' expression ) | ^( '--' expression ) | ^( VAR ID ) | ^( INVOKE ID ( expression )* ) | IntegerLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | 'true' | 'false' | 'null' )
-            int alt9=32;
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:45:2: ( ^( '=' opra= expression[stat] oprb= expression[stat] ) | ^( '+=' opra= expression[stat] oprb= expression[stat] ) | ^( '-=' opra= expression[stat] oprb= expression[stat] ) | ^( '*=' opra= expression[stat] oprb= expression[stat] ) | ^( '/=' opra= expression[stat] oprb= expression[stat] ) | ^( '%=' opra= expression[stat] oprb= expression[stat] ) | ^( '||' opra= expression[stat] oprb= expression[stat] ) | ^( '&&' opra= expression[stat] oprb= expression[stat] ) | ^( '+' opra= expression[stat] oprb= expression[stat] ) | ^( '-' opra= expression[stat] oprb= expression[stat] ) | ^( '*' opra= expression[stat] oprb= expression[stat] ) | ^( '/' opra= expression[stat] oprb= expression[stat] ) | ^( '%' opra= expression[stat] oprb= expression[stat] ) | ^( '==' opra= expression[stat] oprb= expression[stat] ) | ^( '~=' opra= expression[stat] oprb= expression[stat] ) | ^( '!=' opra= expression[stat] oprb= expression[stat] ) | ^( '>=' opra= expression[stat] oprb= expression[stat] ) | ^( '<=' opra= expression[stat] oprb= expression[stat] ) | ^( '<' opra= expression[stat] oprb= expression[stat] ) | ^( '>' opra= expression[stat] oprb= expression[stat] ) | ^( '!' opr= expression[stat] ) | ^( '++' opr= expression[stat] ) | ^( '--' opr= expression[stat] ) | ^( VAR ID ) | ^( INVOKE ID (opr= expression[stat] )* ) | IntegerLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | token= 'true' | token= 'false' | token= 'null' )
+            int alt10=32;
             switch ( input.LA(1) ) {
             case 41:
                 {
-                alt9=1;
+                alt10=1;
+                }
+                break;
+            case 62:
+                {
+                alt10=2;
                 }
                 break;
             case 63:
                 {
-                alt9=2;
+                alt10=3;
                 }
                 break;
             case 64:
                 {
-                alt9=3;
+                alt10=4;
                 }
                 break;
             case 65:
                 {
-                alt9=4;
+                alt10=5;
                 }
                 break;
             case 66:
                 {
-                alt9=5;
-                }
-                break;
-            case 67:
-                {
-                alt9=6;
+                alt10=6;
                 }
                 break;
             case 44:
                 {
-                alt9=7;
+                alt10=7;
                 }
                 break;
             case 45:
                 {
-                alt9=8;
+                alt10=8;
                 }
                 break;
             case 51:
                 {
-                alt9=9;
+                alt10=9;
                 }
                 break;
             case 52:
                 {
-                alt9=10;
+                alt10=10;
                 }
                 break;
             case 53:
                 {
-                alt9=11;
+                alt10=11;
                 }
                 break;
             case 54:
                 {
-                alt9=12;
+                alt10=12;
                 }
                 break;
             case 55:
                 {
-                alt9=13;
+                alt10=13;
                 }
                 break;
             case 46:
                 {
-                alt9=14;
+                alt10=14;
                 }
                 break;
             case 48:
                 {
-                alt9=15;
+                alt10=15;
                 }
                 break;
             case 47:
                 {
-                alt9=16;
+                alt10=16;
+                }
+                break;
+            case 67:
+                {
+                alt10=17;
                 }
                 break;
             case 68:
                 {
-                alt9=17;
-                }
-                break;
-            case 69:
-                {
-                alt9=18;
+                alt10=18;
                 }
                 break;
             case 49:
                 {
-                alt9=19;
+                alt10=19;
                 }
                 break;
             case 50:
                 {
-                alt9=20;
+                alt10=20;
                 }
                 break;
             case 58:
                 {
-                alt9=21;
+                alt10=21;
                 }
                 break;
             case 56:
                 {
-                alt9=22;
+                alt10=22;
                 }
                 break;
             case 57:
                 {
-                alt9=23;
+                alt10=23;
                 }
                 break;
             case VAR:
                 {
-                alt9=24;
+                alt10=24;
                 }
                 break;
             case INVOKE:
                 {
-                alt9=25;
+                alt10=25;
                 }
                 break;
             case IntegerLiteral:
                 {
-                alt9=26;
+                alt10=26;
                 }
                 break;
             case FloatingPointLiteral:
                 {
-                alt9=27;
+                alt10=27;
                 }
                 break;
             case CharacterLiteral:
                 {
-                alt9=28;
+                alt10=28;
                 }
                 break;
             case StringLiteral:
                 {
-                alt9=29;
+                alt10=29;
                 }
                 break;
             case 60:
                 {
-                alt9=30;
+                alt10=30;
                 }
                 break;
             case 61:
                 {
-                alt9=31;
+                alt10=31;
                 }
                 break;
             case 59:
                 {
-                alt9=32;
+                alt10=32;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
+                    new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt9) {
+            switch (alt10) {
                 case 1 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:44:2: ^( '=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:46:2: ^( '=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,41,FOLLOW_41_in_expression250); 
+                    match(input,41,FOLLOW_41_in_expression249); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression254);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression253);
+                    opra=expression(stat);
 
                     state._fsp--;
 
                     pushFollow(FOLLOW_expression_in_expression258);
-                    oprb=expression();
+                    oprb=expression(stat);
 
                     state._fsp--;
 
@@ -786,556 +825,648 @@ public class TreeCSL extends TreeParser {
                     }
                     break;
                 case 2 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:48:3: ^( '+=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:50:3: ^( '+=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,63,FOLLOW_63_in_expression267); 
+                    match(input,62,FOLLOW_62_in_expression268); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression271);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression272);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression275);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression277);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
 
+                    	   expr = new PlusAssignExpression(opra, oprb, opra.getLine());
                     	
 
                     }
                     break;
                 case 3 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:51:3: ^( '-=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:54:3: ^( '-=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,64,FOLLOW_64_in_expression284); 
+                    match(input,63,FOLLOW_63_in_expression287); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression288);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression291);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression292);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression296);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new MinusAssignExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 4 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:52:3: ^( '*=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:58:3: ^( '*=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,65,FOLLOW_65_in_expression298); 
+                    match(input,64,FOLLOW_64_in_expression306); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression302);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression310);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression306);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression315);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new MultiplyAssignExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 5 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:53:3: ^( '/=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:62:3: ^( '/=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,66,FOLLOW_66_in_expression312); 
+                    match(input,65,FOLLOW_65_in_expression325); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression316);
-                    opra=expression();
-
-                    state._fsp--;
-
-                    pushFollow(FOLLOW_expression_in_expression320);
-                    oprb=expression();
-
-                    state._fsp--;
-
-
-                    match(input, Token.UP, null); 
-
-                    }
-                    break;
-                case 6 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:54:3: ^( '%=' opra= expression oprb= expression )
-                    {
-                    match(input,67,FOLLOW_67_in_expression326); 
-
-                    match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression330);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression329);
+                    opra=expression(stat);
 
                     state._fsp--;
 
                     pushFollow(FOLLOW_expression_in_expression334);
-                    oprb=expression();
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new DivideAssignExpression(opra, oprb, opra.getLine());
+                    	
+
+                    }
+                    break;
+                case 6 :
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:66:3: ^( '%=' opra= expression[stat] oprb= expression[stat] )
+                    {
+                    match(input,66,FOLLOW_66_in_expression344); 
+
+                    match(input, Token.DOWN, null); 
+                    pushFollow(FOLLOW_expression_in_expression348);
+                    opra=expression(stat);
+
+                    state._fsp--;
+
+                    pushFollow(FOLLOW_expression_in_expression353);
+                    oprb=expression(stat);
+
+                    state._fsp--;
+
+
+                    match(input, Token.UP, null); 
+
+                    	   expr = new ModAssignExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 7 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:55:3: ^( '||' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:70:3: ^( '||' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,44,FOLLOW_44_in_expression340); 
+                    match(input,44,FOLLOW_44_in_expression363); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression344);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression367);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression348);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression372);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new LogicOrExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 8 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:56:3: ^( '&&' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:74:3: ^( '&&' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,45,FOLLOW_45_in_expression354); 
+                    match(input,45,FOLLOW_45_in_expression382); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression358);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression386);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression362);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression391);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new LogicAndExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 9 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:57:3: ^( '+' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:78:3: ^( '+' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,51,FOLLOW_51_in_expression368); 
+                    match(input,51,FOLLOW_51_in_expression401); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression372);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression405);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression376);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression410);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new PlusExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 10 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:58:3: ^( '-' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:82:3: ^( '-' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,52,FOLLOW_52_in_expression382); 
+                    match(input,52,FOLLOW_52_in_expression420); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression386);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression424);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression390);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression429);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new MinusExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 11 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:59:3: ^( '*' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:86:3: ^( '*' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,53,FOLLOW_53_in_expression396); 
+                    match(input,53,FOLLOW_53_in_expression439); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression400);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression443);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression404);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression448);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new MultiplyExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 12 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:60:3: ^( '/' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:90:3: ^( '/' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,54,FOLLOW_54_in_expression410); 
+                    match(input,54,FOLLOW_54_in_expression458); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression414);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression462);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression418);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression467);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new DivideExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 13 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:61:3: ^( '%' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:94:3: ^( '%' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,55,FOLLOW_55_in_expression424); 
+                    match(input,55,FOLLOW_55_in_expression477); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression428);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression481);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression432);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression486);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new ModExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 14 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:62:3: ^( '==' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:98:3: ^( '==' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,46,FOLLOW_46_in_expression438); 
+                    match(input,46,FOLLOW_46_in_expression496); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression442);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression500);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression446);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression505);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new EqualExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 15 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:63:3: ^( '~=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:102:3: ^( '~=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,48,FOLLOW_48_in_expression452); 
+                    match(input,48,FOLLOW_48_in_expression515); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression456);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression519);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression460);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression524);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new MatchEqualExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 16 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:64:3: ^( '!=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:106:3: ^( '!=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,47,FOLLOW_47_in_expression466); 
+                    match(input,47,FOLLOW_47_in_expression534); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression470);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression538);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression474);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression543);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new NotEqualExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 17 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:65:3: ^( '>=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:110:3: ^( '>=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,68,FOLLOW_68_in_expression480); 
+                    match(input,67,FOLLOW_67_in_expression553); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression484);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression557);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression488);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression562);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new GreaterEqualThanExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 18 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:66:3: ^( '<=' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:114:3: ^( '<=' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,69,FOLLOW_69_in_expression494); 
+                    match(input,68,FOLLOW_68_in_expression572); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression498);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression576);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression502);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression581);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new LessEqualThanExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 19 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:67:3: ^( '<' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:118:3: ^( '<' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,49,FOLLOW_49_in_expression508); 
+                    match(input,49,FOLLOW_49_in_expression591); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression512);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression595);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression516);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression600);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new LessThanExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 20 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:68:3: ^( '>' opra= expression oprb= expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:122:3: ^( '>' opra= expression[stat] oprb= expression[stat] )
                     {
-                    match(input,50,FOLLOW_50_in_expression522); 
+                    match(input,50,FOLLOW_50_in_expression610); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression526);
-                    opra=expression();
+                    pushFollow(FOLLOW_expression_in_expression614);
+                    opra=expression(stat);
 
                     state._fsp--;
 
-                    pushFollow(FOLLOW_expression_in_expression530);
-                    oprb=expression();
+                    pushFollow(FOLLOW_expression_in_expression619);
+                    oprb=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new GreaterThanExpression(opra, oprb, opra.getLine());
+                    	
 
                     }
                     break;
                 case 21 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:69:3: ^( '!' expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:126:3: ^( '!' opr= expression[stat] )
                     {
-                    match(input,58,FOLLOW_58_in_expression536); 
+                    match(input,58,FOLLOW_58_in_expression629); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression538);
-                    expression();
+                    pushFollow(FOLLOW_expression_in_expression633);
+                    opr=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new NotExpression(opr, opr.getLine());
+                    	
 
                     }
                     break;
                 case 22 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:70:3: ^( '++' expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:130:3: ^( '++' opr= expression[stat] )
                     {
-                    match(input,56,FOLLOW_56_in_expression544); 
+                    match(input,56,FOLLOW_56_in_expression643); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression546);
-                    expression();
+                    pushFollow(FOLLOW_expression_in_expression647);
+                    opr=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
+
+                    	   expr = new IncreaseExpression(opr, opr.getLine());
+                    	
 
                     }
                     break;
                 case 23 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:71:3: ^( '--' expression )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:134:3: ^( '--' opr= expression[stat] )
                     {
-                    match(input,57,FOLLOW_57_in_expression553); 
+                    match(input,57,FOLLOW_57_in_expression658); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expression_in_expression555);
-                    expression();
+                    pushFollow(FOLLOW_expression_in_expression662);
+                    opr=expression(stat);
 
                     state._fsp--;
 
 
                     match(input, Token.UP, null); 
 
+                    	   expr = new DecreaseExpression(opr, opr.getLine());
+                    	
+
                     }
                     break;
                 case 24 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:72:3: ^( VAR ID )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:138:3: ^( VAR ID )
                     {
-                    match(input,VAR,FOLLOW_VAR_in_expression562); 
+                    match(input,VAR,FOLLOW_VAR_in_expression673); 
 
                     match(input, Token.DOWN, null); 
-                    ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_expression564); 
+                    ID4=(CommonTree)match(input,ID,FOLLOW_ID_in_expression675); 
 
                     match(input, Token.UP, null); 
 
-                    	   expr = new VarExpression((ID3!=null?ID3.getText():null), (ID3!=null?ID3.getLine():0));
+                    	   expr = new VarExpression((ID4!=null?ID4.getText():null), (ID4!=null?ID4.getLine():0));
                     	
 
                     }
                     break;
                 case 25 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:76:3: ^( INVOKE ID ( expression )* )
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:142:3: ^( INVOKE ID (opr= expression[stat] )* )
                     {
-                    match(input,INVOKE,FOLLOW_INVOKE_in_expression573); 
+                    match(input,INVOKE,FOLLOW_INVOKE_in_expression684); 
 
                     match(input, Token.DOWN, null); 
-                    match(input,ID,FOLLOW_ID_in_expression575); 
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:76:15: ( expression )*
-                    loop8:
+                    ID5=(CommonTree)match(input,ID,FOLLOW_ID_in_expression686); 
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:142:15: (opr= expression[stat] )*
+                    loop9:
                     do {
-                        int alt8=2;
-                        int LA8_0 = input.LA(1);
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
 
-                        if ( (LA8_0==INVOKE||(LA8_0>=VAR && LA8_0<=StringLiteral)||LA8_0==41||(LA8_0>=44 && LA8_0<=61)||(LA8_0>=63 && LA8_0<=69)) ) {
-                            alt8=1;
+                        if ( (LA9_0==INVOKE||(LA9_0>=VAR && LA9_0<=StringLiteral)||LA9_0==41||(LA9_0>=44 && LA9_0<=68)) ) {
+                            alt9=1;
                         }
 
 
-                        switch (alt8) {
+                        switch (alt9) {
                     	case 1 :
-                    	    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:76:15: expression
+                    	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:142:16: opr= expression[stat]
                     	    {
-                    	    pushFollow(FOLLOW_expression_in_expression577);
-                    	    expression();
+                    	    pushFollow(FOLLOW_expression_in_expression691);
+                    	    opr=expression(stat);
 
                     	    state._fsp--;
 
+                    	    exprList.add(opr);
 
                     	    }
                     	    break;
 
                     	default :
-                    	    break loop8;
+                    	    break loop9;
                         }
                     } while (true);
 
 
                     match(input, Token.UP, null); 
 
+                    	   expr = new InvokeExpression((ID5!=null?ID5.getText():null), exprList, (ID5!=null?ID5.getLine():0));
+                    	
+
                     }
                     break;
                 case 26 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:77:3: IntegerLiteral
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:146:3: IntegerLiteral
                     {
-                    match(input,IntegerLiteral,FOLLOW_IntegerLiteral_in_expression583); 
+                    IntegerLiteral6=(CommonTree)match(input,IntegerLiteral,FOLLOW_IntegerLiteral_in_expression703); 
+
+                    	   Integer i = Integer.valueOf((IntegerLiteral6!=null?IntegerLiteral6.getText():null));
+                    	   expr = new ConstantExpression(i,  (IntegerLiteral6!=null?IntegerLiteral6.getLine():0));
+                    	
 
                     }
                     break;
                 case 27 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:78:10: FloatingPointLiteral
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:151:10: FloatingPointLiteral
                     {
-                    match(input,FloatingPointLiteral,FOLLOW_FloatingPointLiteral_in_expression594); 
+                    FloatingPointLiteral7=(CommonTree)match(input,FloatingPointLiteral,FOLLOW_FloatingPointLiteral_in_expression717); 
+
+                    	   Double d = Double.valueOf((FloatingPointLiteral7!=null?FloatingPointLiteral7.getText():null));
+                    	   expr = new ConstantExpression(d,  (FloatingPointLiteral7!=null?FloatingPointLiteral7.getLine():0));
+                    	
 
                     }
                     break;
                 case 28 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:79:10: CharacterLiteral
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:156:10: CharacterLiteral
                     {
-                    match(input,CharacterLiteral,FOLLOW_CharacterLiteral_in_expression605); 
+                    CharacterLiteral8=(CommonTree)match(input,CharacterLiteral,FOLLOW_CharacterLiteral_in_expression738); 
+
+                    	   Character c = Character.valueOf((CharacterLiteral8!=null?CharacterLiteral8.getText():null).charAt(0));
+                    	   expr = new ConstantExpression(c,  (CharacterLiteral8!=null?CharacterLiteral8.getLine():0));
+                    	
 
                     }
                     break;
                 case 29 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:80:10: StringLiteral
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:161:10: StringLiteral
                     {
-                    match(input,StringLiteral,FOLLOW_StringLiteral_in_expression616); 
+                    StringLiteral9=(CommonTree)match(input,StringLiteral,FOLLOW_StringLiteral_in_expression759); 
+
+                    	   expr = new ConstantExpression((StringLiteral9!=null?StringLiteral9.getText():null),  (StringLiteral9!=null?StringLiteral9.getLine():0));
+                    	
 
                     }
                     break;
                 case 30 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:81:10: 'true'
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:165:10: token= 'true'
                     {
-                    match(input,60,FOLLOW_60_in_expression627); 
+                    token=(CommonTree)match(input,60,FOLLOW_60_in_expression782); 
+
+                    	   expr = new ConstantExpression(Boolean.TRUE,  token.getLine());
+                    	
 
                     }
                     break;
                 case 31 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:82:10: 'false'
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:169:10: token= 'false'
                     {
-                    match(input,61,FOLLOW_61_in_expression638); 
+                    token=(CommonTree)match(input,61,FOLLOW_61_in_expression805); 
+
+                    	   expr = new ConstantExpression(Boolean.FALSE,  token.getLine());
+                    	
 
                     }
                     break;
                 case 32 :
-                    // F:\\MyProject\\Java\\tykedog\\grammar\\java\\TreeCSL.g:83:10: 'null'
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\TreeCSL.g:173:10: token= 'null'
                     {
-                    match(input,59,FOLLOW_59_in_expression649); 
+                    token=(CommonTree)match(input,59,FOLLOW_59_in_expression828); 
+
+                    	   expr = new ConstantExpression(null,  token.getLine());
+                    	
 
                     }
                     break;
@@ -1358,110 +1489,108 @@ public class TreeCSL extends TreeParser {
  
 
     public static final BitSet FOLLOW_LANGUAGE_in_language43 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_function_in_language45 = new BitSet(new long[]{0x0000000000000018L});
-    public static final BitSet FOLLOW_FUNCTION_in_function68 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_function70 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_PARAM_in_function74 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VAR_in_function77 = new BitSet(new long[]{0x0000000000000208L});
-    public static final BitSet FOLLOW_statement_in_function87 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_28_in_statement114 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_statement_in_statement119 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_33_in_statement143 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_statement145 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_statement_in_statement147 = new BitSet(new long[]{0x0000000C00000008L});
-    public static final BitSet FOLLOW_34_in_statement151 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_statement153 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_statement_in_statement155 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_35_in_statement162 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_statement_in_statement164 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_62_in_statement177 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_statement179 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_statement181 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_statement_in_statement183 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_36_in_statement193 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_statement195 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_statement_in_statement197 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_40_in_statement207 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_statement215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_statement223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_statement231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_expression250 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression254 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
+    public static final BitSet FOLLOW_statement_in_language45 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_function_in_language48 = new BitSet(new long[]{0x0000000000000018L});
+    public static final BitSet FOLLOW_FUNCTION_in_function71 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_function73 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_PARAM_in_function77 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VAR_in_function80 = new BitSet(new long[]{0x0000000000000208L});
+    public static final BitSet FOLLOW_statement_in_function90 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_block_in_statement111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_statement120 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_statement122 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_block_in_statement125 = new BitSet(new long[]{0x0000000C00000008L});
+    public static final BitSet FOLLOW_34_in_statement129 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_statement131 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_block_in_statement134 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_35_in_statement141 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_block_in_statement143 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_36_in_statement157 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_statement159 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_block_in_statement162 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_40_in_statement172 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_statement180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_statement188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_statement196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_block219 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_statement_in_block224 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_41_in_expression249 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression253 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
     public static final BitSet FOLLOW_expression_in_expression258 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_63_in_expression267 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression271 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression275 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_64_in_expression284 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression288 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression292 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_65_in_expression298 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression302 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression306 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_66_in_expression312 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression316 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression320 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_67_in_expression326 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression330 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
+    public static final BitSet FOLLOW_62_in_expression268 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression272 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression277 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_63_in_expression287 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression291 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression296 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_64_in_expression306 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression310 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression315 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_65_in_expression325 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression329 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
     public static final BitSet FOLLOW_expression_in_expression334 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_44_in_expression340 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression344 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression348 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_45_in_expression354 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression358 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression362 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_51_in_expression368 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression372 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression376 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_52_in_expression382 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression386 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression390 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_53_in_expression396 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression400 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression404 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_54_in_expression410 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression414 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression418 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_55_in_expression424 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression428 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression432 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_46_in_expression438 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression442 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression446 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_48_in_expression452 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression456 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression460 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_47_in_expression466 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression470 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression474 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_68_in_expression480 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression484 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression488 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_69_in_expression494 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression498 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression502 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_49_in_expression508 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression512 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression516 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_50_in_expression522 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression526 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression530 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_58_in_expression536 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression538 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_56_in_expression544 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression546 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_57_in_expression553 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expression_in_expression555 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_VAR_in_expression562 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_expression564 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INVOKE_in_expression573 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_expression575 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_expression_in_expression577 = new BitSet(new long[]{0xFFFFF3B210003E48L,0x000000000000003FL});
-    public static final BitSet FOLLOW_IntegerLiteral_in_expression583 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FloatingPointLiteral_in_expression594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CharacterLiteral_in_expression605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_StringLiteral_in_expression616 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_60_in_expression627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_expression638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_expression649 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_66_in_expression344 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression348 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression353 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_44_in_expression363 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression367 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression372 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_45_in_expression382 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression386 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression391 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_51_in_expression401 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression405 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression410 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_52_in_expression420 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression424 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression429 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_53_in_expression439 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression443 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression448 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_54_in_expression458 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression462 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression467 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_55_in_expression477 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression481 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression486 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_46_in_expression496 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression500 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression505 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_48_in_expression515 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression519 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression524 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_47_in_expression534 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression538 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression543 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_67_in_expression553 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression557 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression562 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_68_in_expression572 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression576 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression581 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_49_in_expression591 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression595 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression600 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_50_in_expression610 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression614 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression619 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_58_in_expression629 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression633 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_56_in_expression643 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression647 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_57_in_expression658 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expression_in_expression662 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_VAR_in_expression673 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_expression675 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INVOKE_in_expression684 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_expression686 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_expression_in_expression691 = new BitSet(new long[]{0xFFFFF3B210003E58L,0x000000000000001FL});
+    public static final BitSet FOLLOW_IntegerLiteral_in_expression703 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FloatingPointLiteral_in_expression717 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CharacterLiteral_in_expression738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_StringLiteral_in_expression759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_expression782 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_expression805 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_expression828 = new BitSet(new long[]{0x0000000000000002L});
 
 }
