@@ -16,7 +16,7 @@ tokens
 @lexer::header{package org.tykedog.csl.parser;}
 @parser::header{package org.tykedog.csl.parser;}
 
-language:	function* -> ^(LANGUAGE function*);
+language:	(statement|function)* -> ^(LANGUAGE statement* function*); 
 
 function	:	'def' ID param '{' statement* '}' -> ^(FUNCTION ID param statement*); 
 

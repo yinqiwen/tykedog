@@ -24,12 +24,13 @@ public class BlockStatement extends Statement
 	private List<Statement> sl;
 
 	@Override
-	public void execute()
+	public StatementExecuteResult execute()
 	{
 		for(Statement s:sl)
 		{
 			s.execute();
-		}	
+		}
+		return StatementExecuteResult.NEXT;
 	}
 	
 

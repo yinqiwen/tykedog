@@ -2,9 +2,9 @@
  * This file is part of the tykedog project.
  * Copyright (c) 2010, BigBand Networks Inc. All rights reserved.
  *
- * Description: Statement.java 
+ * Description: StatementExecuteResult.java 
  *
- * @author qiying.wang [ Jun 10, 2010 | 4:45:31 PM ]
+ * @author qiying.wang [ Jun 11, 2010 | 2:36:54 PM ]
  *
  */
 package org.tykedog.csl.interpreter.statement;
@@ -12,7 +12,7 @@ package org.tykedog.csl.interpreter.statement;
 /**
  *
  */
-public abstract class Statement
+public enum StatementExecuteResult
 {
-	public abstract StatementExecuteResult execute();
+	NEXT,BREAK,CONTINE,RETURN
 }

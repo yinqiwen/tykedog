@@ -36,4 +36,12 @@ public class Function
 	private List<Statement> stats = new ArrayList<Statement>();
 	
 	
+	public void execute(Object[] args)
+	{
+		for(Statement s:stats)
+		{
+			s.execute();
+		}
+	}
+	
 }
