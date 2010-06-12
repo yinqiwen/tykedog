@@ -30,7 +30,7 @@ statement
 	| 'while'^ expression block
 	| 'break' ';'!
 	| 'continue' ';'!
-	| 'return' ';'!
+	| 'return' expression? ';' -> ^('return' expression?)
 	|  expression ';'!
 	;
 	

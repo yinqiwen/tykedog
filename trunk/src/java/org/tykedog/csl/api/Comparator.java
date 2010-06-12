@@ -12,7 +12,7 @@ package org.tykedog.csl.api;
 /**
  *
  */
-public interface Comparator<T> extends java.util.Comparator<T>
+public interface Comparator
 {
 	/**
 	 * Operator "~="
@@ -20,5 +20,13 @@ public interface Comparator<T> extends java.util.Comparator<T>
 	 * @param oprb
 	 * @return
 	 */
-	public boolean match(T opra, T oprb);
+	public boolean match(Object opra, Object oprb);
+	
+	/**
+	 * Operator ">", "<", "==", ">=", "<=", "!="
+	 * @param opra
+	 * @param oprb
+	 * @return
+	 */
+	int compare(Object opra, Object oprb);
 }

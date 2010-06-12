@@ -9,10 +9,12 @@
  */
 package org.tykedog.csl.interpreter.statement;
 
+import org.tykedog.csl.interpreter.CallStack;
+
 /**
  *
  */
 public abstract class Statement
 {
-	public abstract StatementExecuteResult execute();
+	public abstract StatementExecuteResult execute(CallStack callstack);
 }

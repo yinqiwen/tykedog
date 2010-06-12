@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g 2010-06-11 10:33:47
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g 2010-06-12 15:14:39
 package org.tykedog.csl.parser;
 
 import org.antlr.runtime.*;
@@ -317,7 +317,7 @@ public class CSLParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ID, statement, param
+            // elements: statement, param, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -523,7 +523,7 @@ public class CSLParser extends Parser {
     };
 
     // $ANTLR start "statement"
-    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:25:1: statement : ( block | 'if' ifExpr= expression ifBlock= block ( 'elif' elifExpr= expression elifBlock= block )* ( 'else' elseBlock= block )? -> ^( 'if' $ifExpr $ifBlock ( ^( 'elif' $elifExpr $elifBlock) )* ( ^( 'else' $elseBlock) )? ) | 'while' expression block | 'break' ';' | 'continue' ';' | 'return' ';' | expression ';' );
+    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:25:1: statement : ( block | 'if' ifExpr= expression ifBlock= block ( 'elif' elifExpr= expression elifBlock= block )* ( 'else' elseBlock= block )? -> ^( 'if' $ifExpr $ifBlock ( ^( 'elif' $elifExpr $elifBlock) )* ( ^( 'else' $elseBlock) )? ) | 'while' expression block | 'break' ';' | 'continue' ';' | 'return' ( expression )? ';' -> ^( 'return' ( expression )? ) | expression ';' );
     public final CSLParser.statement_return statement() throws RecognitionException {
         CSLParser.statement_return retval = new CSLParser.statement_return();
         retval.start = input.LT(1);
@@ -539,8 +539,8 @@ public class CSLParser extends Parser {
         Token string_literal23=null;
         Token char_literal24=null;
         Token string_literal25=null;
-        Token char_literal26=null;
-        Token char_literal28=null;
+        Token char_literal27=null;
+        Token char_literal29=null;
         CSLParser.expression_return ifExpr = null;
 
         CSLParser.block_return ifBlock = null;
@@ -557,7 +557,9 @@ public class CSLParser extends Parser {
 
         CSLParser.block_return block20 = null;
 
-        CSLParser.expression_return expression27 = null;
+        CSLParser.expression_return expression26 = null;
+
+        CSLParser.expression_return expression28 = null;
 
 
         Object string_literal15_tree=null;
@@ -569,45 +571,47 @@ public class CSLParser extends Parser {
         Object string_literal23_tree=null;
         Object char_literal24_tree=null;
         Object string_literal25_tree=null;
-        Object char_literal26_tree=null;
-        Object char_literal28_tree=null;
+        Object char_literal27_tree=null;
+        Object char_literal29_tree=null;
+        RewriteRuleTokenStream stream_40=new RewriteRuleTokenStream(adaptor,"token 40");
         RewriteRuleTokenStream stream_35=new RewriteRuleTokenStream(adaptor,"token 35");
         RewriteRuleTokenStream stream_33=new RewriteRuleTokenStream(adaptor,"token 33");
         RewriteRuleTokenStream stream_34=new RewriteRuleTokenStream(adaptor,"token 34");
+        RewriteRuleTokenStream stream_38=new RewriteRuleTokenStream(adaptor,"token 38");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_block=new RewriteRuleSubtreeStream(adaptor,"rule block");
         try {
-            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:26:2: ( block | 'if' ifExpr= expression ifBlock= block ( 'elif' elifExpr= expression elifBlock= block )* ( 'else' elseBlock= block )? -> ^( 'if' $ifExpr $ifBlock ( ^( 'elif' $elifExpr $elifBlock) )* ( ^( 'else' $elseBlock) )? ) | 'while' expression block | 'break' ';' | 'continue' ';' | 'return' ';' | expression ';' )
-            int alt7=7;
+            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:26:2: ( block | 'if' ifExpr= expression ifBlock= block ( 'elif' elifExpr= expression elifBlock= block )* ( 'else' elseBlock= block )? -> ^( 'if' $ifExpr $ifBlock ( ^( 'elif' $elifExpr $elifBlock) )* ( ^( 'else' $elseBlock) )? ) | 'while' expression block | 'break' ';' | 'continue' ';' | 'return' ( expression )? ';' -> ^( 'return' ( expression )? ) | expression ';' )
+            int alt8=7;
             switch ( input.LA(1) ) {
             case 28:
                 {
-                alt7=1;
+                alt8=1;
                 }
                 break;
             case 33:
                 {
-                alt7=2;
+                alt8=2;
                 }
                 break;
             case 36:
                 {
-                alt7=3;
+                alt8=3;
                 }
                 break;
             case 37:
                 {
-                alt7=4;
+                alt8=4;
                 }
                 break;
             case 39:
                 {
-                alt7=5;
+                alt8=5;
                 }
                 break;
             case 40:
                 {
-                alt7=6;
+                alt8=6;
                 }
                 break;
             case ID:
@@ -626,18 +630,18 @@ public class CSLParser extends Parser {
             case 60:
             case 61:
                 {
-                alt7=7;
+                alt8=7;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:27:2: block
                     {
@@ -738,7 +742,7 @@ public class CSLParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: elifExpr, ifBlock, ifExpr, 35, elseBlock, 34, 33, elifBlock
+                    // elements: elifExpr, 35, ifExpr, 34, 33, elifBlock, ifBlock, elseBlock
                     // token labels: 
                     // rule labels: ifExpr, retval, ifBlock, elseBlock, elifExpr, elifBlock
                     // token list labels: 
@@ -858,17 +862,71 @@ public class CSLParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:33:4: 'return' ';'
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:33:4: 'return' ( expression )? ';'
                     {
-                    root_0 = (Object)adaptor.nil();
+                    string_literal25=(Token)match(input,40,FOLLOW_40_in_statement266); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_40.add(string_literal25);
 
-                    string_literal25=(Token)match(input,40,FOLLOW_40_in_statement266); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    string_literal25_tree = (Object)adaptor.create(string_literal25);
-                    adaptor.addChild(root_0, string_literal25_tree);
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:33:13: ( expression )?
+                    int alt7=2;
+                    int LA7_0 = input.LA(1);
+
+                    if ( ((LA7_0>=ID && LA7_0<=StringLiteral)||LA7_0==30||(LA7_0>=51 && LA7_0<=52)||(LA7_0>=56 && LA7_0<=61)) ) {
+                        alt7=1;
                     }
-                    char_literal26=(Token)match(input,38,FOLLOW_38_in_statement268); if (state.failed) return retval;
+                    switch (alt7) {
+                        case 1 :
+                            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:0:0: expression
+                            {
+                            pushFollow(FOLLOW_expression_in_statement268);
+                            expression26=expression();
 
+                            state._fsp--;
+                            if (state.failed) return retval;
+                            if ( state.backtracking==0 ) stream_expression.add(expression26.getTree());
+
+                            }
+                            break;
+
+                    }
+
+                    char_literal27=(Token)match(input,38,FOLLOW_38_in_statement271); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_38.add(char_literal27);
+
+
+
+                    // AST REWRITE
+                    // elements: 40, expression
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    if ( state.backtracking==0 ) {
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 33:29: -> ^( 'return' ( expression )? )
+                    {
+                        // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:33:32: ^( 'return' ( expression )? )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(stream_40.nextNode(), root_1);
+
+                        // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:33:43: ( expression )?
+                        if ( stream_expression.hasNext() ) {
+                            adaptor.addChild(root_1, stream_expression.nextTree());
+
+                        }
+                        stream_expression.reset();
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+                    retval.tree = root_0;}
                     }
                     break;
                 case 7 :
@@ -876,13 +934,13 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_expression_in_statement275);
-                    expression27=expression();
+                    pushFollow(FOLLOW_expression_in_statement286);
+                    expression28=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression27.getTree());
-                    char_literal28=(Token)match(input,38,FOLLOW_38_in_statement277); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression28.getTree());
+                    char_literal29=(Token)match(input,38,FOLLOW_38_in_statement288); if (state.failed) return retval;
 
                     }
                     break;
@@ -921,13 +979,13 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal29=null;
-        Token char_literal31=null;
-        CSLParser.statement_return statement30 = null;
+        Token char_literal30=null;
+        Token char_literal32=null;
+        CSLParser.statement_return statement31 = null;
 
 
-        Object char_literal29_tree=null;
-        Object char_literal31_tree=null;
+        Object char_literal30_tree=null;
+        Object char_literal32_tree=null;
         RewriteRuleTokenStream stream_28=new RewriteRuleTokenStream(adaptor,"token 28");
         RewriteRuleTokenStream stream_29=new RewriteRuleTokenStream(adaptor,"token 29");
         RewriteRuleSubtreeStream stream_statement=new RewriteRuleSubtreeStream(adaptor,"rule statement");
@@ -935,41 +993,41 @@ public class CSLParser extends Parser {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:37:7: ( '{' ( statement )* '}' -> ^( '{' ( statement )* ) )
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:37:9: '{' ( statement )* '}'
             {
-            char_literal29=(Token)match(input,28,FOLLOW_28_in_block289); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_28.add(char_literal29);
+            char_literal30=(Token)match(input,28,FOLLOW_28_in_block300); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_28.add(char_literal30);
 
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:37:13: ( statement )*
-            loop8:
+            loop9:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( ((LA8_0>=ID && LA8_0<=StringLiteral)||LA8_0==28||LA8_0==30||LA8_0==33||(LA8_0>=36 && LA8_0<=37)||(LA8_0>=39 && LA8_0<=40)||(LA8_0>=51 && LA8_0<=52)||(LA8_0>=56 && LA8_0<=61)) ) {
-                    alt8=1;
+                if ( ((LA9_0>=ID && LA9_0<=StringLiteral)||LA9_0==28||LA9_0==30||LA9_0==33||(LA9_0>=36 && LA9_0<=37)||(LA9_0>=39 && LA9_0<=40)||(LA9_0>=51 && LA9_0<=52)||(LA9_0>=56 && LA9_0<=61)) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt9) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:0:0: statement
             	    {
-            	    pushFollow(FOLLOW_statement_in_block291);
-            	    statement30=statement();
+            	    pushFollow(FOLLOW_statement_in_block302);
+            	    statement31=statement();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) stream_statement.add(statement30.getTree());
+            	    if ( state.backtracking==0 ) stream_statement.add(statement31.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop9;
                 }
             } while (true);
 
-            char_literal31=(Token)match(input,29,FOLLOW_29_in_block294); if (state.failed) return retval; 
-            if ( state.backtracking==0 ) stream_29.add(char_literal31);
+            char_literal32=(Token)match(input,29,FOLLOW_29_in_block305); if (state.failed) return retval; 
+            if ( state.backtracking==0 ) stream_29.add(char_literal32);
 
 
 
@@ -1040,13 +1098,13 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal33=null;
-        CSLParser.conditionalExpression_return conditionalExpression32 = null;
+        Token char_literal34=null;
+        CSLParser.conditionalExpression_return conditionalExpression33 = null;
 
-        CSLParser.expression_return expression34 = null;
+        CSLParser.expression_return expression35 = null;
 
 
-        Object char_literal33_tree=null;
+        Object char_literal34_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:41:2: ( conditionalExpression ( '=' expression )? )
@@ -1054,38 +1112,38 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_conditionalExpression_in_expression314);
-            conditionalExpression32=conditionalExpression();
+            pushFollow(FOLLOW_conditionalExpression_in_expression325);
+            conditionalExpression33=conditionalExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalExpression32.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalExpression33.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:41:26: ( '=' expression )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA9_0==41) ) {
-                int LA9_1 = input.LA(2);
+            if ( (LA10_0==41) ) {
+                int LA10_1 = input.LA(2);
 
-                if ( (synpred15_CSL()) ) {
-                    alt9=1;
+                if ( (synpred16_CSL()) ) {
+                    alt10=1;
                 }
             }
-            switch (alt9) {
+            switch (alt10) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:41:27: '=' expression
                     {
-                    char_literal33=(Token)match(input,41,FOLLOW_41_in_expression317); if (state.failed) return retval;
+                    char_literal34=(Token)match(input,41,FOLLOW_41_in_expression328); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal33_tree = (Object)adaptor.create(char_literal33);
-                    root_0 = (Object)adaptor.becomeRoot(char_literal33_tree, root_0);
+                    char_literal34_tree = (Object)adaptor.create(char_literal34);
+                    root_0 = (Object)adaptor.becomeRoot(char_literal34_tree, root_0);
                     }
-                    pushFollow(FOLLOW_expression_in_expression320);
-                    expression34=expression();
+                    pushFollow(FOLLOW_expression_in_expression331);
+                    expression35=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression34.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression35.getTree());
 
                     }
                     break;
@@ -1128,17 +1186,17 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal36=null;
-        Token char_literal38=null;
-        CSLParser.conditionalOrExpression_return conditionalOrExpression35 = null;
+        Token char_literal37=null;
+        Token char_literal39=null;
+        CSLParser.conditionalOrExpression_return conditionalOrExpression36 = null;
 
-        CSLParser.expression_return expression37 = null;
+        CSLParser.expression_return expression38 = null;
 
-        CSLParser.expression_return expression39 = null;
+        CSLParser.expression_return expression40 = null;
 
 
-        Object char_literal36_tree=null;
-        Object char_literal38_tree=null;
+        Object char_literal37_tree=null;
+        Object char_literal39_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:45:5: ( conditionalOrExpression ( '?' expression ':' expression )? )
@@ -1146,41 +1204,41 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_conditionalOrExpression_in_conditionalExpression338);
-            conditionalOrExpression35=conditionalOrExpression();
+            pushFollow(FOLLOW_conditionalOrExpression_in_conditionalExpression349);
+            conditionalOrExpression36=conditionalOrExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalOrExpression35.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalOrExpression36.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:45:33: ( '?' expression ':' expression )?
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA10_0==42) ) {
-                alt10=1;
+            if ( (LA11_0==42) ) {
+                alt11=1;
             }
-            switch (alt10) {
+            switch (alt11) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:45:35: '?' expression ':' expression
                     {
-                    char_literal36=(Token)match(input,42,FOLLOW_42_in_conditionalExpression342); if (state.failed) return retval;
+                    char_literal37=(Token)match(input,42,FOLLOW_42_in_conditionalExpression353); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal36_tree = (Object)adaptor.create(char_literal36);
-                    root_0 = (Object)adaptor.becomeRoot(char_literal36_tree, root_0);
+                    char_literal37_tree = (Object)adaptor.create(char_literal37);
+                    root_0 = (Object)adaptor.becomeRoot(char_literal37_tree, root_0);
                     }
-                    pushFollow(FOLLOW_expression_in_conditionalExpression345);
-                    expression37=expression();
+                    pushFollow(FOLLOW_expression_in_conditionalExpression356);
+                    expression38=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression37.getTree());
-                    char_literal38=(Token)match(input,43,FOLLOW_43_in_conditionalExpression347); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expression_in_conditionalExpression350);
-                    expression39=expression();
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression38.getTree());
+                    char_literal39=(Token)match(input,43,FOLLOW_43_in_conditionalExpression358); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expression_in_conditionalExpression361);
+                    expression40=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression39.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression40.getTree());
 
                     }
                     break;
@@ -1223,13 +1281,13 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token string_literal41=null;
-        CSLParser.conditionalAndExpression_return conditionalAndExpression40 = null;
+        Token string_literal42=null;
+        CSLParser.conditionalAndExpression_return conditionalAndExpression41 = null;
 
-        CSLParser.conditionalAndExpression_return conditionalAndExpression42 = null;
+        CSLParser.conditionalAndExpression_return conditionalAndExpression43 = null;
 
 
-        Object string_literal41_tree=null;
+        Object string_literal42_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:49:5: ( conditionalAndExpression ( '||' conditionalAndExpression )* )
@@ -1237,44 +1295,44 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_conditionalAndExpression_in_conditionalOrExpression369);
-            conditionalAndExpression40=conditionalAndExpression();
+            pushFollow(FOLLOW_conditionalAndExpression_in_conditionalOrExpression380);
+            conditionalAndExpression41=conditionalAndExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalAndExpression40.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalAndExpression41.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:49:34: ( '||' conditionalAndExpression )*
-            loop11:
+            loop12:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA11_0==44) ) {
-                    alt11=1;
+                if ( (LA12_0==44) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt12) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:49:36: '||' conditionalAndExpression
             	    {
-            	    string_literal41=(Token)match(input,44,FOLLOW_44_in_conditionalOrExpression373); if (state.failed) return retval;
+            	    string_literal42=(Token)match(input,44,FOLLOW_44_in_conditionalOrExpression384); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    string_literal41_tree = (Object)adaptor.create(string_literal41);
-            	    root_0 = (Object)adaptor.becomeRoot(string_literal41_tree, root_0);
+            	    string_literal42_tree = (Object)adaptor.create(string_literal42);
+            	    root_0 = (Object)adaptor.becomeRoot(string_literal42_tree, root_0);
             	    }
-            	    pushFollow(FOLLOW_conditionalAndExpression_in_conditionalOrExpression376);
-            	    conditionalAndExpression42=conditionalAndExpression();
+            	    pushFollow(FOLLOW_conditionalAndExpression_in_conditionalOrExpression387);
+            	    conditionalAndExpression43=conditionalAndExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalAndExpression42.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, conditionalAndExpression43.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop12;
                 }
             } while (true);
 
@@ -1314,13 +1372,13 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token string_literal44=null;
-        CSLParser.equalityExpression_return equalityExpression43 = null;
+        Token string_literal45=null;
+        CSLParser.equalityExpression_return equalityExpression44 = null;
 
-        CSLParser.equalityExpression_return equalityExpression45 = null;
+        CSLParser.equalityExpression_return equalityExpression46 = null;
 
 
-        Object string_literal44_tree=null;
+        Object string_literal45_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:53:5: ( equalityExpression ( '&&' equalityExpression )* )
@@ -1328,44 +1386,44 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_equalityExpression_in_conditionalAndExpression395);
-            equalityExpression43=equalityExpression();
+            pushFollow(FOLLOW_equalityExpression_in_conditionalAndExpression406);
+            equalityExpression44=equalityExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression43.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression44.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:53:28: ( '&&' equalityExpression )*
-            loop12:
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA12_0==45) ) {
-                    alt12=1;
+                if ( (LA13_0==45) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:53:30: '&&' equalityExpression
             	    {
-            	    string_literal44=(Token)match(input,45,FOLLOW_45_in_conditionalAndExpression399); if (state.failed) return retval;
+            	    string_literal45=(Token)match(input,45,FOLLOW_45_in_conditionalAndExpression410); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    string_literal44_tree = (Object)adaptor.create(string_literal44);
-            	    root_0 = (Object)adaptor.becomeRoot(string_literal44_tree, root_0);
+            	    string_literal45_tree = (Object)adaptor.create(string_literal45);
+            	    root_0 = (Object)adaptor.becomeRoot(string_literal45_tree, root_0);
             	    }
-            	    pushFollow(FOLLOW_equalityExpression_in_conditionalAndExpression402);
-            	    equalityExpression45=equalityExpression();
+            	    pushFollow(FOLLOW_equalityExpression_in_conditionalAndExpression413);
+            	    equalityExpression46=equalityExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression45.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression46.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop13;
                 }
             } while (true);
 
@@ -1405,17 +1463,17 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token string_literal47=null;
         Token string_literal48=null;
         Token string_literal49=null;
-        CSLParser.relationalExpression_return relationalExpression46 = null;
+        Token string_literal50=null;
+        CSLParser.relationalExpression_return relationalExpression47 = null;
 
-        CSLParser.relationalExpression_return relationalExpression50 = null;
+        CSLParser.relationalExpression_return relationalExpression51 = null;
 
 
-        Object string_literal47_tree=null;
         Object string_literal48_tree=null;
         Object string_literal49_tree=null;
+        Object string_literal50_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:5: ( relationalExpression ( ( '==' | '!=' | '~=' ) relationalExpression )* )
@@ -1423,69 +1481,58 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_relationalExpression_in_equalityExpression421);
-            relationalExpression46=relationalExpression();
+            pushFollow(FOLLOW_relationalExpression_in_equalityExpression432);
+            relationalExpression47=relationalExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression46.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression47.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:30: ( ( '==' | '!=' | '~=' ) relationalExpression )*
-            loop14:
+            loop15:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-                if ( ((LA14_0>=46 && LA14_0<=48)) ) {
-                    alt14=1;
+                if ( ((LA15_0>=46 && LA15_0<=48)) ) {
+                    alt15=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt15) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:32: ( '==' | '!=' | '~=' ) relationalExpression
             	    {
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:32: ( '==' | '!=' | '~=' )
-            	    int alt13=3;
+            	    int alt14=3;
             	    switch ( input.LA(1) ) {
             	    case 46:
             	        {
-            	        alt13=1;
+            	        alt14=1;
             	        }
             	        break;
             	    case 47:
             	        {
-            	        alt13=2;
+            	        alt14=2;
             	        }
             	        break;
             	    case 48:
             	        {
-            	        alt13=3;
+            	        alt14=3;
             	        }
             	        break;
             	    default:
             	        if (state.backtracking>0) {state.failed=true; return retval;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 13, 0, input);
+            	            new NoViableAltException("", 14, 0, input);
 
             	        throw nvae;
             	    }
 
-            	    switch (alt13) {
+            	    switch (alt14) {
             	        case 1 :
             	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:33: '=='
             	            {
-            	            string_literal47=(Token)match(input,46,FOLLOW_46_in_equalityExpression426); if (state.failed) return retval;
-            	            if ( state.backtracking==0 ) {
-            	            string_literal47_tree = (Object)adaptor.create(string_literal47);
-            	            root_0 = (Object)adaptor.becomeRoot(string_literal47_tree, root_0);
-            	            }
-
-            	            }
-            	            break;
-            	        case 2 :
-            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:41: '!='
-            	            {
-            	            string_literal48=(Token)match(input,47,FOLLOW_47_in_equalityExpression431); if (state.failed) return retval;
+            	            string_literal48=(Token)match(input,46,FOLLOW_46_in_equalityExpression437); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            string_literal48_tree = (Object)adaptor.create(string_literal48);
             	            root_0 = (Object)adaptor.becomeRoot(string_literal48_tree, root_0);
@@ -1493,10 +1540,10 @@ public class CSLParser extends Parser {
 
             	            }
             	            break;
-            	        case 3 :
-            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:49: '~='
+            	        case 2 :
+            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:41: '!='
             	            {
-            	            string_literal49=(Token)match(input,48,FOLLOW_48_in_equalityExpression436); if (state.failed) return retval;
+            	            string_literal49=(Token)match(input,47,FOLLOW_47_in_equalityExpression442); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            string_literal49_tree = (Object)adaptor.create(string_literal49);
             	            root_0 = (Object)adaptor.becomeRoot(string_literal49_tree, root_0);
@@ -1504,21 +1551,32 @@ public class CSLParser extends Parser {
 
             	            }
             	            break;
+            	        case 3 :
+            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:57:49: '~='
+            	            {
+            	            string_literal50=(Token)match(input,48,FOLLOW_48_in_equalityExpression447); if (state.failed) return retval;
+            	            if ( state.backtracking==0 ) {
+            	            string_literal50_tree = (Object)adaptor.create(string_literal50);
+            	            root_0 = (Object)adaptor.becomeRoot(string_literal50_tree, root_0);
+            	            }
+
+            	            }
+            	            break;
 
             	    }
 
-            	    pushFollow(FOLLOW_relationalExpression_in_equalityExpression440);
-            	    relationalExpression50=relationalExpression();
+            	    pushFollow(FOLLOW_relationalExpression_in_equalityExpression451);
+            	    relationalExpression51=relationalExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression50.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression51.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop15;
                 }
             } while (true);
 
@@ -1558,11 +1616,11 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        CSLParser.additiveExpression_return additiveExpression51 = null;
+        CSLParser.additiveExpression_return additiveExpression52 = null;
 
-        CSLParser.relationalOp_return relationalOp52 = null;
+        CSLParser.relationalOp_return relationalOp53 = null;
 
-        CSLParser.additiveExpression_return additiveExpression53 = null;
+        CSLParser.additiveExpression_return additiveExpression54 = null;
 
 
 
@@ -1572,45 +1630,45 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_additiveExpression_in_relationalExpression459);
-            additiveExpression51=additiveExpression();
+            pushFollow(FOLLOW_additiveExpression_in_relationalExpression470);
+            additiveExpression52=additiveExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression51.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression52.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:61:28: ( relationalOp additiveExpression )*
-            loop15:
+            loop16:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-                if ( ((LA15_0>=49 && LA15_0<=50)) ) {
-                    alt15=1;
+                if ( ((LA16_0>=49 && LA16_0<=50)) ) {
+                    alt16=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt16) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:61:30: relationalOp additiveExpression
             	    {
-            	    pushFollow(FOLLOW_relationalOp_in_relationalExpression463);
-            	    relationalOp52=relationalOp();
+            	    pushFollow(FOLLOW_relationalOp_in_relationalExpression474);
+            	    relationalOp53=relationalOp();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) root_0 = (Object)adaptor.becomeRoot(relationalOp52.getTree(), root_0);
-            	    pushFollow(FOLLOW_additiveExpression_in_relationalExpression466);
-            	    additiveExpression53=additiveExpression();
+            	    if ( state.backtracking==0 ) root_0 = (Object)adaptor.becomeRoot(relationalOp53.getTree(), root_0);
+            	    pushFollow(FOLLOW_additiveExpression_in_relationalExpression477);
+            	    additiveExpression54=additiveExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression53.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression54.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop16;
                 }
             } while (true);
 
@@ -1650,19 +1708,19 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal54=null;
         Token char_literal55=null;
         Token char_literal56=null;
         Token char_literal57=null;
         Token char_literal58=null;
         Token char_literal59=null;
+        Token char_literal60=null;
 
-        Object char_literal54_tree=null;
         Object char_literal55_tree=null;
         Object char_literal56_tree=null;
         Object char_literal57_tree=null;
         Object char_literal58_tree=null;
         Object char_literal59_tree=null;
+        Object char_literal60_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:2: ( ( '<' '=' | '>' '=' | '<' | '>' ) )
@@ -1671,39 +1729,39 @@ public class CSLParser extends Parser {
             root_0 = (Object)adaptor.nil();
 
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:4: ( '<' '=' | '>' '=' | '<' | '>' )
-            int alt16=4;
-            int LA16_0 = input.LA(1);
+            int alt17=4;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA16_0==49) ) {
-                int LA16_1 = input.LA(2);
+            if ( (LA17_0==49) ) {
+                int LA17_1 = input.LA(2);
 
-                if ( (LA16_1==41) ) {
-                    alt16=1;
+                if ( (LA17_1==41) ) {
+                    alt17=1;
                 }
-                else if ( ((LA16_1>=ID && LA16_1<=StringLiteral)||LA16_1==30||(LA16_1>=51 && LA16_1<=52)||(LA16_1>=56 && LA16_1<=61)) ) {
-                    alt16=3;
+                else if ( ((LA17_1>=ID && LA17_1<=StringLiteral)||LA17_1==30||(LA17_1>=51 && LA17_1<=52)||(LA17_1>=56 && LA17_1<=61)) ) {
+                    alt17=3;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 16, 1, input);
+                        new NoViableAltException("", 17, 1, input);
 
                     throw nvae;
                 }
             }
-            else if ( (LA16_0==50) ) {
-                int LA16_2 = input.LA(2);
+            else if ( (LA17_0==50) ) {
+                int LA17_2 = input.LA(2);
 
-                if ( (LA16_2==41) ) {
-                    alt16=2;
+                if ( (LA17_2==41) ) {
+                    alt17=2;
                 }
-                else if ( ((LA16_2>=ID && LA16_2<=StringLiteral)||LA16_2==30||(LA16_2>=51 && LA16_2<=52)||(LA16_2>=56 && LA16_2<=61)) ) {
-                    alt16=4;
+                else if ( ((LA17_2>=ID && LA17_2<=StringLiteral)||LA17_2==30||(LA17_2>=51 && LA17_2<=52)||(LA17_2>=56 && LA17_2<=61)) ) {
+                    alt17=4;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 16, 2, input);
+                        new NoViableAltException("", 17, 2, input);
 
                     throw nvae;
                 }
@@ -1711,23 +1769,23 @@ public class CSLParser extends Parser {
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 17, 0, input);
 
                 throw nvae;
             }
-            switch (alt16) {
+            switch (alt17) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:5: '<' '='
                     {
-                    char_literal54=(Token)match(input,49,FOLLOW_49_in_relationalOp482); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    char_literal54_tree = (Object)adaptor.create(char_literal54);
-                    adaptor.addChild(root_0, char_literal54_tree);
-                    }
-                    char_literal55=(Token)match(input,41,FOLLOW_41_in_relationalOp484); if (state.failed) return retval;
+                    char_literal55=(Token)match(input,49,FOLLOW_49_in_relationalOp493); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     char_literal55_tree = (Object)adaptor.create(char_literal55);
                     adaptor.addChild(root_0, char_literal55_tree);
+                    }
+                    char_literal56=(Token)match(input,41,FOLLOW_41_in_relationalOp495); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    char_literal56_tree = (Object)adaptor.create(char_literal56);
+                    adaptor.addChild(root_0, char_literal56_tree);
                     }
 
                     }
@@ -1735,23 +1793,12 @@ public class CSLParser extends Parser {
                 case 2 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:15: '>' '='
                     {
-                    char_literal56=(Token)match(input,50,FOLLOW_50_in_relationalOp488); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    char_literal56_tree = (Object)adaptor.create(char_literal56);
-                    adaptor.addChild(root_0, char_literal56_tree);
-                    }
-                    char_literal57=(Token)match(input,41,FOLLOW_41_in_relationalOp490); if (state.failed) return retval;
+                    char_literal57=(Token)match(input,50,FOLLOW_50_in_relationalOp499); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     char_literal57_tree = (Object)adaptor.create(char_literal57);
                     adaptor.addChild(root_0, char_literal57_tree);
                     }
-
-                    }
-                    break;
-                case 3 :
-                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:25: '<'
-                    {
-                    char_literal58=(Token)match(input,49,FOLLOW_49_in_relationalOp494); if (state.failed) return retval;
+                    char_literal58=(Token)match(input,41,FOLLOW_41_in_relationalOp501); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     char_literal58_tree = (Object)adaptor.create(char_literal58);
                     adaptor.addChild(root_0, char_literal58_tree);
@@ -1759,13 +1806,24 @@ public class CSLParser extends Parser {
 
                     }
                     break;
-                case 4 :
-                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:31: '>'
+                case 3 :
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:25: '<'
                     {
-                    char_literal59=(Token)match(input,50,FOLLOW_50_in_relationalOp498); if (state.failed) return retval;
+                    char_literal59=(Token)match(input,49,FOLLOW_49_in_relationalOp505); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     char_literal59_tree = (Object)adaptor.create(char_literal59);
                     adaptor.addChild(root_0, char_literal59_tree);
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:65:31: '>'
+                    {
+                    char_literal60=(Token)match(input,50,FOLLOW_50_in_relationalOp509); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    char_literal60_tree = (Object)adaptor.create(char_literal60);
+                    adaptor.addChild(root_0, char_literal60_tree);
                     }
 
                     }
@@ -1809,15 +1867,15 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal61=null;
         Token char_literal62=null;
-        CSLParser.multiplicativeExpression_return multiplicativeExpression60 = null;
+        Token char_literal63=null;
+        CSLParser.multiplicativeExpression_return multiplicativeExpression61 = null;
 
-        CSLParser.multiplicativeExpression_return multiplicativeExpression63 = null;
+        CSLParser.multiplicativeExpression_return multiplicativeExpression64 = null;
 
 
-        Object char_literal61_tree=null;
         Object char_literal62_tree=null;
+        Object char_literal63_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:69:5: ( multiplicativeExpression ( ( '+' | '-' ) multiplicativeExpression )* )
@@ -1825,60 +1883,49 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression515);
-            multiplicativeExpression60=multiplicativeExpression();
+            pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression526);
+            multiplicativeExpression61=multiplicativeExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression60.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression61.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:69:34: ( ( '+' | '-' ) multiplicativeExpression )*
-            loop18:
+            loop19:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( ((LA18_0>=51 && LA18_0<=52)) ) {
-                    alt18=1;
+                if ( ((LA19_0>=51 && LA19_0<=52)) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt19) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:69:36: ( '+' | '-' ) multiplicativeExpression
             	    {
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:69:36: ( '+' | '-' )
-            	    int alt17=2;
-            	    int LA17_0 = input.LA(1);
+            	    int alt18=2;
+            	    int LA18_0 = input.LA(1);
 
-            	    if ( (LA17_0==51) ) {
-            	        alt17=1;
+            	    if ( (LA18_0==51) ) {
+            	        alt18=1;
             	    }
-            	    else if ( (LA17_0==52) ) {
-            	        alt17=2;
+            	    else if ( (LA18_0==52) ) {
+            	        alt18=2;
             	    }
             	    else {
             	        if (state.backtracking>0) {state.failed=true; return retval;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 17, 0, input);
+            	            new NoViableAltException("", 18, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt17) {
+            	    switch (alt18) {
             	        case 1 :
             	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:69:37: '+'
             	            {
-            	            char_literal61=(Token)match(input,51,FOLLOW_51_in_additiveExpression520); if (state.failed) return retval;
-            	            if ( state.backtracking==0 ) {
-            	            char_literal61_tree = (Object)adaptor.create(char_literal61);
-            	            root_0 = (Object)adaptor.becomeRoot(char_literal61_tree, root_0);
-            	            }
-
-            	            }
-            	            break;
-            	        case 2 :
-            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:69:44: '-'
-            	            {
-            	            char_literal62=(Token)match(input,52,FOLLOW_52_in_additiveExpression525); if (state.failed) return retval;
+            	            char_literal62=(Token)match(input,51,FOLLOW_51_in_additiveExpression531); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            char_literal62_tree = (Object)adaptor.create(char_literal62);
             	            root_0 = (Object)adaptor.becomeRoot(char_literal62_tree, root_0);
@@ -1886,21 +1933,32 @@ public class CSLParser extends Parser {
 
             	            }
             	            break;
+            	        case 2 :
+            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:69:44: '-'
+            	            {
+            	            char_literal63=(Token)match(input,52,FOLLOW_52_in_additiveExpression536); if (state.failed) return retval;
+            	            if ( state.backtracking==0 ) {
+            	            char_literal63_tree = (Object)adaptor.create(char_literal63);
+            	            root_0 = (Object)adaptor.becomeRoot(char_literal63_tree, root_0);
+            	            }
+
+            	            }
+            	            break;
 
             	    }
 
-            	    pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression529);
-            	    multiplicativeExpression63=multiplicativeExpression();
+            	    pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression540);
+            	    multiplicativeExpression64=multiplicativeExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression63.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression64.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop19;
                 }
             } while (true);
 
@@ -1940,17 +1998,17 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal65=null;
         Token char_literal66=null;
         Token char_literal67=null;
-        CSLParser.unaryExpression_return unaryExpression64 = null;
+        Token char_literal68=null;
+        CSLParser.unaryExpression_return unaryExpression65 = null;
 
-        CSLParser.unaryExpression_return unaryExpression68 = null;
+        CSLParser.unaryExpression_return unaryExpression69 = null;
 
 
-        Object char_literal65_tree=null;
         Object char_literal66_tree=null;
         Object char_literal67_tree=null;
+        Object char_literal68_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:5: ( unaryExpression ( ( '*' | '/' | '%' ) unaryExpression )* )
@@ -1958,69 +2016,58 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression548);
-            unaryExpression64=unaryExpression();
+            pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression559);
+            unaryExpression65=unaryExpression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression64.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression65.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:25: ( ( '*' | '/' | '%' ) unaryExpression )*
-            loop20:
+            loop21:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( ((LA20_0>=53 && LA20_0<=55)) ) {
-                    alt20=1;
+                if ( ((LA21_0>=53 && LA21_0<=55)) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt21) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:27: ( '*' | '/' | '%' ) unaryExpression
             	    {
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:27: ( '*' | '/' | '%' )
-            	    int alt19=3;
+            	    int alt20=3;
             	    switch ( input.LA(1) ) {
             	    case 53:
             	        {
-            	        alt19=1;
+            	        alt20=1;
             	        }
             	        break;
             	    case 54:
             	        {
-            	        alt19=2;
+            	        alt20=2;
             	        }
             	        break;
             	    case 55:
             	        {
-            	        alt19=3;
+            	        alt20=3;
             	        }
             	        break;
             	    default:
             	        if (state.backtracking>0) {state.failed=true; return retval;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 19, 0, input);
+            	            new NoViableAltException("", 20, 0, input);
 
             	        throw nvae;
             	    }
 
-            	    switch (alt19) {
+            	    switch (alt20) {
             	        case 1 :
             	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:29: '*'
             	            {
-            	            char_literal65=(Token)match(input,53,FOLLOW_53_in_multiplicativeExpression554); if (state.failed) return retval;
-            	            if ( state.backtracking==0 ) {
-            	            char_literal65_tree = (Object)adaptor.create(char_literal65);
-            	            root_0 = (Object)adaptor.becomeRoot(char_literal65_tree, root_0);
-            	            }
-
-            	            }
-            	            break;
-            	        case 2 :
-            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:36: '/'
-            	            {
-            	            char_literal66=(Token)match(input,54,FOLLOW_54_in_multiplicativeExpression559); if (state.failed) return retval;
+            	            char_literal66=(Token)match(input,53,FOLLOW_53_in_multiplicativeExpression565); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            char_literal66_tree = (Object)adaptor.create(char_literal66);
             	            root_0 = (Object)adaptor.becomeRoot(char_literal66_tree, root_0);
@@ -2028,10 +2075,10 @@ public class CSLParser extends Parser {
 
             	            }
             	            break;
-            	        case 3 :
-            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:43: '%'
+            	        case 2 :
+            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:36: '/'
             	            {
-            	            char_literal67=(Token)match(input,55,FOLLOW_55_in_multiplicativeExpression564); if (state.failed) return retval;
+            	            char_literal67=(Token)match(input,54,FOLLOW_54_in_multiplicativeExpression570); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            char_literal67_tree = (Object)adaptor.create(char_literal67);
             	            root_0 = (Object)adaptor.becomeRoot(char_literal67_tree, root_0);
@@ -2039,21 +2086,32 @@ public class CSLParser extends Parser {
 
             	            }
             	            break;
+            	        case 3 :
+            	            // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:73:43: '%'
+            	            {
+            	            char_literal68=(Token)match(input,55,FOLLOW_55_in_multiplicativeExpression575); if (state.failed) return retval;
+            	            if ( state.backtracking==0 ) {
+            	            char_literal68_tree = (Object)adaptor.create(char_literal68);
+            	            root_0 = (Object)adaptor.becomeRoot(char_literal68_tree, root_0);
+            	            }
+
+            	            }
+            	            break;
 
             	    }
 
-            	    pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression569);
-            	    unaryExpression68=unaryExpression();
+            	    pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression580);
+            	    unaryExpression69=unaryExpression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression68.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression69.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop20;
+            	    break loop21;
                 }
             } while (true);
 
@@ -2093,59 +2151,59 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal69=null;
-        Token char_literal71=null;
-        Token string_literal73=null;
-        Token string_literal75=null;
-        Token char_literal77=null;
-        CSLParser.unaryExpression_return unaryExpression70 = null;
+        Token char_literal70=null;
+        Token char_literal72=null;
+        Token string_literal74=null;
+        Token string_literal76=null;
+        Token char_literal78=null;
+        CSLParser.unaryExpression_return unaryExpression71 = null;
 
-        CSLParser.unaryExpression_return unaryExpression72 = null;
+        CSLParser.unaryExpression_return unaryExpression73 = null;
 
-        CSLParser.unaryExpression_return unaryExpression74 = null;
+        CSLParser.unaryExpression_return unaryExpression75 = null;
 
-        CSLParser.unaryExpression_return unaryExpression76 = null;
+        CSLParser.unaryExpression_return unaryExpression77 = null;
 
-        CSLParser.unaryExpression_return unaryExpression78 = null;
+        CSLParser.unaryExpression_return unaryExpression79 = null;
 
-        CSLParser.topExpression_return topExpression79 = null;
+        CSLParser.topExpression_return topExpression80 = null;
 
 
-        Object char_literal69_tree=null;
-        Object char_literal71_tree=null;
-        Object string_literal73_tree=null;
-        Object string_literal75_tree=null;
-        Object char_literal77_tree=null;
+        Object char_literal70_tree=null;
+        Object char_literal72_tree=null;
+        Object string_literal74_tree=null;
+        Object string_literal76_tree=null;
+        Object char_literal78_tree=null;
         RewriteRuleTokenStream stream_57=new RewriteRuleTokenStream(adaptor,"token 57");
         RewriteRuleTokenStream stream_56=new RewriteRuleTokenStream(adaptor,"token 56");
         RewriteRuleSubtreeStream stream_unaryExpression=new RewriteRuleSubtreeStream(adaptor,"rule unaryExpression");
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:77:5: ( '+' unaryExpression | '-' unaryExpression | '++' unaryExpression -> ^( '++' unaryExpression ) | '--' unaryExpression -> ^( '--' unaryExpression ) | '!' unaryExpression | topExpression )
-            int alt21=6;
+            int alt22=6;
             switch ( input.LA(1) ) {
             case 51:
                 {
-                alt21=1;
+                alt22=1;
                 }
                 break;
             case 52:
                 {
-                alt21=2;
+                alt22=2;
                 }
                 break;
             case 56:
                 {
-                alt21=3;
+                alt22=3;
                 }
                 break;
             case 57:
                 {
-                alt21=4;
+                alt22=4;
                 }
                 break;
             case 58:
                 {
-                alt21=5;
+                alt22=5;
                 }
                 break;
             case ID:
@@ -2159,34 +2217,34 @@ public class CSLParser extends Parser {
             case 60:
             case 61:
                 {
-                alt21=6;
+                alt22=6;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:77:9: '+' unaryExpression
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    char_literal69=(Token)match(input,51,FOLLOW_51_in_unaryExpression589); if (state.failed) return retval;
+                    char_literal70=(Token)match(input,51,FOLLOW_51_in_unaryExpression600); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal69_tree = (Object)adaptor.create(char_literal69);
-                    root_0 = (Object)adaptor.becomeRoot(char_literal69_tree, root_0);
+                    char_literal70_tree = (Object)adaptor.create(char_literal70);
+                    root_0 = (Object)adaptor.becomeRoot(char_literal70_tree, root_0);
                     }
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression592);
-                    unaryExpression70=unaryExpression();
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression603);
+                    unaryExpression71=unaryExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression70.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression71.getTree());
 
                     }
                     break;
@@ -2195,36 +2253,36 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    char_literal71=(Token)match(input,52,FOLLOW_52_in_unaryExpression600); if (state.failed) return retval;
+                    char_literal72=(Token)match(input,52,FOLLOW_52_in_unaryExpression611); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal71_tree = (Object)adaptor.create(char_literal71);
-                    root_0 = (Object)adaptor.becomeRoot(char_literal71_tree, root_0);
+                    char_literal72_tree = (Object)adaptor.create(char_literal72);
+                    root_0 = (Object)adaptor.becomeRoot(char_literal72_tree, root_0);
                     }
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression603);
-                    unaryExpression72=unaryExpression();
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression614);
+                    unaryExpression73=unaryExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression72.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression73.getTree());
 
                     }
                     break;
                 case 3 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:79:9: '++' unaryExpression
                     {
-                    string_literal73=(Token)match(input,56,FOLLOW_56_in_unaryExpression613); if (state.failed) return retval; 
-                    if ( state.backtracking==0 ) stream_56.add(string_literal73);
+                    string_literal74=(Token)match(input,56,FOLLOW_56_in_unaryExpression624); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_56.add(string_literal74);
 
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression615);
-                    unaryExpression74=unaryExpression();
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression626);
+                    unaryExpression75=unaryExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_unaryExpression.add(unaryExpression74.getTree());
+                    if ( state.backtracking==0 ) stream_unaryExpression.add(unaryExpression75.getTree());
 
 
                     // AST REWRITE
-                    // elements: unaryExpression, 56
+                    // elements: 56, unaryExpression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2255,15 +2313,15 @@ public class CSLParser extends Parser {
                 case 4 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:80:9: '--' unaryExpression
                     {
-                    string_literal75=(Token)match(input,57,FOLLOW_57_in_unaryExpression633); if (state.failed) return retval; 
-                    if ( state.backtracking==0 ) stream_57.add(string_literal75);
+                    string_literal76=(Token)match(input,57,FOLLOW_57_in_unaryExpression644); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_57.add(string_literal76);
 
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression635);
-                    unaryExpression76=unaryExpression();
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression646);
+                    unaryExpression77=unaryExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_unaryExpression.add(unaryExpression76.getTree());
+                    if ( state.backtracking==0 ) stream_unaryExpression.add(unaryExpression77.getTree());
 
 
                     // AST REWRITE
@@ -2300,17 +2358,17 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    char_literal77=(Token)match(input,58,FOLLOW_58_in_unaryExpression653); if (state.failed) return retval;
+                    char_literal78=(Token)match(input,58,FOLLOW_58_in_unaryExpression664); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    char_literal77_tree = (Object)adaptor.create(char_literal77);
-                    root_0 = (Object)adaptor.becomeRoot(char_literal77_tree, root_0);
+                    char_literal78_tree = (Object)adaptor.create(char_literal78);
+                    root_0 = (Object)adaptor.becomeRoot(char_literal78_tree, root_0);
                     }
-                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression656);
-                    unaryExpression78=unaryExpression();
+                    pushFollow(FOLLOW_unaryExpression_in_unaryExpression667);
+                    unaryExpression79=unaryExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression78.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression79.getTree());
 
                     }
                     break;
@@ -2319,12 +2377,12 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_topExpression_in_unaryExpression666);
-                    topExpression79=topExpression();
+                    pushFollow(FOLLOW_topExpression_in_unaryExpression677);
+                    topExpression80=topExpression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, topExpression79.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, topExpression80.getTree());
 
                     }
                     break;
@@ -2363,35 +2421,35 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal80=null;
-        Token char_literal82=null;
-        Token ID83=null;
-        Token VAR86=null;
-        CSLParser.expression_return expression81 = null;
+        Token char_literal81=null;
+        Token char_literal83=null;
+        Token ID84=null;
+        Token VAR87=null;
+        CSLParser.expression_return expression82 = null;
 
-        CSLParser.arguments_return arguments84 = null;
+        CSLParser.arguments_return arguments85 = null;
 
-        CSLParser.literal_return literal85 = null;
+        CSLParser.literal_return literal86 = null;
 
 
-        Object char_literal80_tree=null;
-        Object char_literal82_tree=null;
-        Object ID83_tree=null;
-        Object VAR86_tree=null;
+        Object char_literal81_tree=null;
+        Object char_literal83_tree=null;
+        Object ID84_tree=null;
+        Object VAR87_tree=null;
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleSubtreeStream stream_arguments=new RewriteRuleSubtreeStream(adaptor,"rule arguments");
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:86:5: ( '(' expression ')' | ID arguments -> ^( INVOKE ID arguments ) | literal | VAR )
-            int alt22=4;
+            int alt23=4;
             switch ( input.LA(1) ) {
             case 30:
                 {
-                alt22=1;
+                alt23=1;
                 }
                 break;
             case ID:
                 {
-                alt22=2;
+                alt23=2;
                 }
                 break;
             case IntegerLiteral:
@@ -2402,51 +2460,51 @@ public class CSLParser extends Parser {
             case 60:
             case 61:
                 {
-                alt22=3;
+                alt23=3;
                 }
                 break;
             case VAR:
                 {
-                alt22=4;
+                alt23=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt22) {
+            switch (alt23) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:87:5: '(' expression ')'
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    char_literal80=(Token)match(input,30,FOLLOW_30_in_topExpression689); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expression_in_topExpression692);
-                    expression81=expression();
+                    char_literal81=(Token)match(input,30,FOLLOW_30_in_topExpression700); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expression_in_topExpression703);
+                    expression82=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression81.getTree());
-                    char_literal82=(Token)match(input,32,FOLLOW_32_in_topExpression694); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression82.getTree());
+                    char_literal83=(Token)match(input,32,FOLLOW_32_in_topExpression705); if (state.failed) return retval;
 
                     }
                     break;
                 case 2 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:88:7: ID arguments
                     {
-                    ID83=(Token)match(input,ID,FOLLOW_ID_in_topExpression704); if (state.failed) return retval; 
-                    if ( state.backtracking==0 ) stream_ID.add(ID83);
+                    ID84=(Token)match(input,ID,FOLLOW_ID_in_topExpression715); if (state.failed) return retval; 
+                    if ( state.backtracking==0 ) stream_ID.add(ID84);
 
-                    pushFollow(FOLLOW_arguments_in_topExpression706);
-                    arguments84=arguments();
+                    pushFollow(FOLLOW_arguments_in_topExpression717);
+                    arguments85=arguments();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_arguments.add(arguments84.getTree());
+                    if ( state.backtracking==0 ) stream_arguments.add(arguments85.getTree());
 
 
                     // AST REWRITE
@@ -2484,12 +2542,12 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_literal_in_topExpression724);
-                    literal85=literal();
+                    pushFollow(FOLLOW_literal_in_topExpression735);
+                    literal86=literal();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, literal85.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, literal86.getTree());
 
                     }
                     break;
@@ -2498,10 +2556,10 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    VAR86=(Token)match(input,VAR,FOLLOW_VAR_in_topExpression732); if (state.failed) return retval;
+                    VAR87=(Token)match(input,VAR,FOLLOW_VAR_in_topExpression743); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    VAR86_tree = (Object)adaptor.create(VAR86);
-                    adaptor.addChild(root_0, VAR86_tree);
+                    VAR87_tree = (Object)adaptor.create(VAR87);
+                    adaptor.addChild(root_0, VAR87_tree);
                     }
 
                     }
@@ -2541,13 +2599,13 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal87=null;
-        Token char_literal89=null;
-        CSLParser.expressionList_return expressionList88 = null;
+        Token char_literal88=null;
+        Token char_literal90=null;
+        CSLParser.expressionList_return expressionList89 = null;
 
 
-        Object char_literal87_tree=null;
-        Object char_literal89_tree=null;
+        Object char_literal88_tree=null;
+        Object char_literal90_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:93:2: ( '(' ( expressionList )? ')' )
@@ -2555,31 +2613,31 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            char_literal87=(Token)match(input,30,FOLLOW_30_in_arguments742); if (state.failed) return retval;
+            char_literal88=(Token)match(input,30,FOLLOW_30_in_arguments753); if (state.failed) return retval;
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:93:9: ( expressionList )?
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( ((LA23_0>=ID && LA23_0<=StringLiteral)||LA23_0==30||(LA23_0>=51 && LA23_0<=52)||(LA23_0>=56 && LA23_0<=61)) ) {
-                alt23=1;
+            if ( ((LA24_0>=ID && LA24_0<=StringLiteral)||LA24_0==30||(LA24_0>=51 && LA24_0<=52)||(LA24_0>=56 && LA24_0<=61)) ) {
+                alt24=1;
             }
-            switch (alt23) {
+            switch (alt24) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:0:0: expressionList
                     {
-                    pushFollow(FOLLOW_expressionList_in_arguments745);
-                    expressionList88=expressionList();
+                    pushFollow(FOLLOW_expressionList_in_arguments756);
+                    expressionList89=expressionList();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList88.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList89.getTree());
 
                     }
                     break;
 
             }
 
-            char_literal89=(Token)match(input,32,FOLLOW_32_in_arguments748); if (state.failed) return retval;
+            char_literal90=(Token)match(input,32,FOLLOW_32_in_arguments759); if (state.failed) return retval;
 
             }
 
@@ -2616,55 +2674,55 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token char_literal91=null;
-        CSLParser.expression_return expression90 = null;
+        Token char_literal92=null;
+        CSLParser.expression_return expression91 = null;
 
-        CSLParser.expression_return expression92 = null;
+        CSLParser.expression_return expression93 = null;
 
 
-        Object char_literal91_tree=null;
+        Object char_literal92_tree=null;
         RewriteRuleTokenStream stream_31=new RewriteRuleTokenStream(adaptor,"token 31");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:98:5: ( expression ( ',' expression )* -> ( expression )+ )
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:98:9: expression ( ',' expression )*
             {
-            pushFollow(FOLLOW_expression_in_expressionList766);
-            expression90=expression();
+            pushFollow(FOLLOW_expression_in_expressionList777);
+            expression91=expression();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) stream_expression.add(expression90.getTree());
+            if ( state.backtracking==0 ) stream_expression.add(expression91.getTree());
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:98:20: ( ',' expression )*
-            loop24:
+            loop25:
             do {
-                int alt24=2;
-                int LA24_0 = input.LA(1);
+                int alt25=2;
+                int LA25_0 = input.LA(1);
 
-                if ( (LA24_0==31) ) {
-                    alt24=1;
+                if ( (LA25_0==31) ) {
+                    alt25=1;
                 }
 
 
-                switch (alt24) {
+                switch (alt25) {
             	case 1 :
             	    // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:98:21: ',' expression
             	    {
-            	    char_literal91=(Token)match(input,31,FOLLOW_31_in_expressionList769); if (state.failed) return retval; 
-            	    if ( state.backtracking==0 ) stream_31.add(char_literal91);
+            	    char_literal92=(Token)match(input,31,FOLLOW_31_in_expressionList780); if (state.failed) return retval; 
+            	    if ( state.backtracking==0 ) stream_31.add(char_literal92);
 
-            	    pushFollow(FOLLOW_expression_in_expressionList771);
-            	    expression92=expression();
+            	    pushFollow(FOLLOW_expression_in_expressionList782);
+            	    expression93=expression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) stream_expression.add(expression92.getTree());
+            	    if ( state.backtracking==0 ) stream_expression.add(expression93.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop25;
                 }
             } while (true);
 
@@ -2731,73 +2789,73 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token IntegerLiteral93=null;
-        Token FloatingPointLiteral94=null;
-        Token CharacterLiteral95=null;
-        Token StringLiteral96=null;
-        Token string_literal98=null;
-        CSLParser.booleanLiteral_return booleanLiteral97 = null;
+        Token IntegerLiteral94=null;
+        Token FloatingPointLiteral95=null;
+        Token CharacterLiteral96=null;
+        Token StringLiteral97=null;
+        Token string_literal99=null;
+        CSLParser.booleanLiteral_return booleanLiteral98 = null;
 
 
-        Object IntegerLiteral93_tree=null;
-        Object FloatingPointLiteral94_tree=null;
-        Object CharacterLiteral95_tree=null;
-        Object StringLiteral96_tree=null;
-        Object string_literal98_tree=null;
+        Object IntegerLiteral94_tree=null;
+        Object FloatingPointLiteral95_tree=null;
+        Object CharacterLiteral96_tree=null;
+        Object StringLiteral97_tree=null;
+        Object string_literal99_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:105:2: ( IntegerLiteral | FloatingPointLiteral | CharacterLiteral | StringLiteral | booleanLiteral | 'null' )
-            int alt25=6;
+            int alt26=6;
             switch ( input.LA(1) ) {
             case IntegerLiteral:
                 {
-                alt25=1;
+                alt26=1;
                 }
                 break;
             case FloatingPointLiteral:
                 {
-                alt25=2;
+                alt26=2;
                 }
                 break;
             case CharacterLiteral:
                 {
-                alt25=3;
+                alt26=3;
                 }
                 break;
             case StringLiteral:
                 {
-                alt25=4;
+                alt26=4;
                 }
                 break;
             case 60:
             case 61:
                 {
-                alt25=5;
+                alt26=5;
                 }
                 break;
             case 59:
                 {
-                alt25=6;
+                alt26=6;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 25, 0, input);
+                    new NoViableAltException("", 26, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
                     // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:105:6: IntegerLiteral
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    IntegerLiteral93=(Token)match(input,IntegerLiteral,FOLLOW_IntegerLiteral_in_literal806); if (state.failed) return retval;
+                    IntegerLiteral94=(Token)match(input,IntegerLiteral,FOLLOW_IntegerLiteral_in_literal817); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    IntegerLiteral93_tree = (Object)adaptor.create(IntegerLiteral93);
-                    adaptor.addChild(root_0, IntegerLiteral93_tree);
+                    IntegerLiteral94_tree = (Object)adaptor.create(IntegerLiteral94);
+                    adaptor.addChild(root_0, IntegerLiteral94_tree);
                     }
 
                     }
@@ -2807,10 +2865,10 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    FloatingPointLiteral94=(Token)match(input,FloatingPointLiteral,FOLLOW_FloatingPointLiteral_in_literal816); if (state.failed) return retval;
+                    FloatingPointLiteral95=(Token)match(input,FloatingPointLiteral,FOLLOW_FloatingPointLiteral_in_literal827); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    FloatingPointLiteral94_tree = (Object)adaptor.create(FloatingPointLiteral94);
-                    adaptor.addChild(root_0, FloatingPointLiteral94_tree);
+                    FloatingPointLiteral95_tree = (Object)adaptor.create(FloatingPointLiteral95);
+                    adaptor.addChild(root_0, FloatingPointLiteral95_tree);
                     }
 
                     }
@@ -2820,10 +2878,10 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    CharacterLiteral95=(Token)match(input,CharacterLiteral,FOLLOW_CharacterLiteral_in_literal826); if (state.failed) return retval;
+                    CharacterLiteral96=(Token)match(input,CharacterLiteral,FOLLOW_CharacterLiteral_in_literal837); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    CharacterLiteral95_tree = (Object)adaptor.create(CharacterLiteral95);
-                    adaptor.addChild(root_0, CharacterLiteral95_tree);
+                    CharacterLiteral96_tree = (Object)adaptor.create(CharacterLiteral96);
+                    adaptor.addChild(root_0, CharacterLiteral96_tree);
                     }
 
                     }
@@ -2833,10 +2891,10 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    StringLiteral96=(Token)match(input,StringLiteral,FOLLOW_StringLiteral_in_literal836); if (state.failed) return retval;
+                    StringLiteral97=(Token)match(input,StringLiteral,FOLLOW_StringLiteral_in_literal847); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    StringLiteral96_tree = (Object)adaptor.create(StringLiteral96);
-                    adaptor.addChild(root_0, StringLiteral96_tree);
+                    StringLiteral97_tree = (Object)adaptor.create(StringLiteral97);
+                    adaptor.addChild(root_0, StringLiteral97_tree);
                     }
 
                     }
@@ -2846,12 +2904,12 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_booleanLiteral_in_literal846);
-                    booleanLiteral97=booleanLiteral();
+                    pushFollow(FOLLOW_booleanLiteral_in_literal857);
+                    booleanLiteral98=booleanLiteral();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, booleanLiteral97.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, booleanLiteral98.getTree());
 
                     }
                     break;
@@ -2860,10 +2918,10 @@ public class CSLParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    string_literal98=(Token)match(input,59,FOLLOW_59_in_literal856); if (state.failed) return retval;
+                    string_literal99=(Token)match(input,59,FOLLOW_59_in_literal867); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    string_literal98_tree = (Object)adaptor.create(string_literal98);
-                    adaptor.addChild(root_0, string_literal98_tree);
+                    string_literal99_tree = (Object)adaptor.create(string_literal99);
+                    adaptor.addChild(root_0, string_literal99_tree);
                     }
 
                     }
@@ -2903,9 +2961,9 @@ public class CSLParser extends Parser {
 
         Object root_0 = null;
 
-        Token set99=null;
+        Token set100=null;
 
-        Object set99_tree=null;
+        Object set100_tree=null;
 
         try {
             // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:121:5: ( 'true' | 'false' )
@@ -2913,10 +2971,10 @@ public class CSLParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            set99=(Token)input.LT(1);
+            set100=(Token)input.LT(1);
             if ( (input.LA(1)>=60 && input.LA(1)<=61) ) {
                 input.consume();
-                if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set99));
+                if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set100));
                 state.errorRecovery=false;state.failed=false;
             }
             else {
@@ -2948,13 +3006,13 @@ public class CSLParser extends Parser {
     }
     // $ANTLR end "booleanLiteral"
 
-    // $ANTLR start synpred15_CSL
-    public final void synpred15_CSL_fragment() throws RecognitionException {   
+    // $ANTLR start synpred16_CSL
+    public final void synpred16_CSL_fragment() throws RecognitionException {   
         // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:41:27: ( '=' expression )
         // D:\\Src\\MyProject\\tykedog\\grammar\\java\\CSL.g:41:27: '=' expression
         {
-        match(input,41,FOLLOW_41_in_synpred15_CSL317); if (state.failed) return ;
-        pushFollow(FOLLOW_expression_in_synpred15_CSL320);
+        match(input,41,FOLLOW_41_in_synpred16_CSL328); if (state.failed) return ;
+        pushFollow(FOLLOW_expression_in_synpred16_CSL331);
         expression();
 
         state._fsp--;
@@ -2962,15 +3020,15 @@ public class CSLParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred15_CSL
+    // $ANTLR end synpred16_CSL
 
     // Delegated rules
 
-    public final boolean synpred15_CSL() {
+    public final boolean synpred16_CSL() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred15_CSL_fragment(); // can never throw exception
+            synpred16_CSL_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -3013,82 +3071,83 @@ public class CSLParser extends Parser {
     public static final BitSet FOLLOW_38_in_statement252 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_39_in_statement258 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_38_in_statement260 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_statement266 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_statement268 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_statement275 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_statement277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_block289 = new BitSet(new long[]{0x3F1801B270003F00L});
-    public static final BitSet FOLLOW_statement_in_block291 = new BitSet(new long[]{0x3F1801B270003F00L});
-    public static final BitSet FOLLOW_29_in_block294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_conditionalExpression_in_expression314 = new BitSet(new long[]{0x0000020000000002L});
-    public static final BitSet FOLLOW_41_in_expression317 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_expression_in_expression320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_conditionalOrExpression_in_conditionalExpression338 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_42_in_conditionalExpression342 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_expression_in_conditionalExpression345 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_43_in_conditionalExpression347 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_expression_in_conditionalExpression350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_conditionalAndExpression_in_conditionalOrExpression369 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_44_in_conditionalOrExpression373 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_conditionalAndExpression_in_conditionalOrExpression376 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_equalityExpression_in_conditionalAndExpression395 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_45_in_conditionalAndExpression399 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_equalityExpression_in_conditionalAndExpression402 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_relationalExpression_in_equalityExpression421 = new BitSet(new long[]{0x0001C00000000002L});
-    public static final BitSet FOLLOW_46_in_equalityExpression426 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_47_in_equalityExpression431 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_48_in_equalityExpression436 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_relationalExpression_in_equalityExpression440 = new BitSet(new long[]{0x0001C00000000002L});
-    public static final BitSet FOLLOW_additiveExpression_in_relationalExpression459 = new BitSet(new long[]{0x0006000000000002L});
-    public static final BitSet FOLLOW_relationalOp_in_relationalExpression463 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_additiveExpression_in_relationalExpression466 = new BitSet(new long[]{0x0006000000000002L});
-    public static final BitSet FOLLOW_49_in_relationalOp482 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_relationalOp484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_relationalOp488 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_relationalOp490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_relationalOp494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_relationalOp498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression515 = new BitSet(new long[]{0x0018000000000002L});
-    public static final BitSet FOLLOW_51_in_additiveExpression520 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_52_in_additiveExpression525 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression529 = new BitSet(new long[]{0x0018000000000002L});
-    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression548 = new BitSet(new long[]{0x00E0000000000002L});
-    public static final BitSet FOLLOW_53_in_multiplicativeExpression554 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_54_in_multiplicativeExpression559 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_55_in_multiplicativeExpression564 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression569 = new BitSet(new long[]{0x00E0000000000002L});
-    public static final BitSet FOLLOW_51_in_unaryExpression589 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression592 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_unaryExpression600 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_40_in_statement266 = new BitSet(new long[]{0x3F1801F250003F00L});
+    public static final BitSet FOLLOW_expression_in_statement268 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_statement271 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_statement286 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_statement288 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_block300 = new BitSet(new long[]{0x3F1801B270003F00L});
+    public static final BitSet FOLLOW_statement_in_block302 = new BitSet(new long[]{0x3F1801B270003F00L});
+    public static final BitSet FOLLOW_29_in_block305 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_conditionalExpression_in_expression325 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_41_in_expression328 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_expression_in_expression331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_conditionalOrExpression_in_conditionalExpression349 = new BitSet(new long[]{0x0000040000000002L});
+    public static final BitSet FOLLOW_42_in_conditionalExpression353 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_expression_in_conditionalExpression356 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_43_in_conditionalExpression358 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_expression_in_conditionalExpression361 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_conditionalAndExpression_in_conditionalOrExpression380 = new BitSet(new long[]{0x0000100000000002L});
+    public static final BitSet FOLLOW_44_in_conditionalOrExpression384 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_conditionalAndExpression_in_conditionalOrExpression387 = new BitSet(new long[]{0x0000100000000002L});
+    public static final BitSet FOLLOW_equalityExpression_in_conditionalAndExpression406 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_45_in_conditionalAndExpression410 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_equalityExpression_in_conditionalAndExpression413 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_relationalExpression_in_equalityExpression432 = new BitSet(new long[]{0x0001C00000000002L});
+    public static final BitSet FOLLOW_46_in_equalityExpression437 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_47_in_equalityExpression442 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_48_in_equalityExpression447 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_relationalExpression_in_equalityExpression451 = new BitSet(new long[]{0x0001C00000000002L});
+    public static final BitSet FOLLOW_additiveExpression_in_relationalExpression470 = new BitSet(new long[]{0x0006000000000002L});
+    public static final BitSet FOLLOW_relationalOp_in_relationalExpression474 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_additiveExpression_in_relationalExpression477 = new BitSet(new long[]{0x0006000000000002L});
+    public static final BitSet FOLLOW_49_in_relationalOp493 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_relationalOp495 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_relationalOp499 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_relationalOp501 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_relationalOp505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_relationalOp509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression526 = new BitSet(new long[]{0x0018000000000002L});
+    public static final BitSet FOLLOW_51_in_additiveExpression531 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_52_in_additiveExpression536 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression540 = new BitSet(new long[]{0x0018000000000002L});
+    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression559 = new BitSet(new long[]{0x00E0000000000002L});
+    public static final BitSet FOLLOW_53_in_multiplicativeExpression565 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_54_in_multiplicativeExpression570 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_55_in_multiplicativeExpression575 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression580 = new BitSet(new long[]{0x00E0000000000002L});
+    public static final BitSet FOLLOW_51_in_unaryExpression600 = new BitSet(new long[]{0x3F1801B250003F00L});
     public static final BitSet FOLLOW_unaryExpression_in_unaryExpression603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_unaryExpression613 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression615 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_unaryExpression633 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_unaryExpression653 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression656 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_topExpression_in_unaryExpression666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_topExpression689 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_expression_in_topExpression692 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_topExpression694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_topExpression704 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_arguments_in_topExpression706 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_literal_in_topExpression724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VAR_in_topExpression732 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_arguments742 = new BitSet(new long[]{0x3F1801B350003F00L});
-    public static final BitSet FOLLOW_expressionList_in_arguments745 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_arguments748 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_expressionList766 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_31_in_expressionList769 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_expression_in_expressionList771 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_IntegerLiteral_in_literal806 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FloatingPointLiteral_in_literal816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CharacterLiteral_in_literal826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_StringLiteral_in_literal836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_booleanLiteral_in_literal846 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_literal856 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_unaryExpression611 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression614 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_unaryExpression624 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_unaryExpression644 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression646 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_unaryExpression664 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_unaryExpression_in_unaryExpression667 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_topExpression_in_unaryExpression677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_topExpression700 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_expression_in_topExpression703 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_topExpression705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_topExpression715 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_arguments_in_topExpression717 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_literal_in_topExpression735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VAR_in_topExpression743 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_arguments753 = new BitSet(new long[]{0x3F1801B350003F00L});
+    public static final BitSet FOLLOW_expressionList_in_arguments756 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_arguments759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_expressionList777 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_31_in_expressionList780 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_expression_in_expressionList782 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_IntegerLiteral_in_literal817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FloatingPointLiteral_in_literal827 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CharacterLiteral_in_literal837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_StringLiteral_in_literal847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_booleanLiteral_in_literal857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_literal867 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_booleanLiteral0 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_synpred15_CSL317 = new BitSet(new long[]{0x3F1801B250003F00L});
-    public static final BitSet FOLLOW_expression_in_synpred15_CSL320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_synpred16_CSL328 = new BitSet(new long[]{0x3F1801B250003F00L});
+    public static final BitSet FOLLOW_expression_in_synpred16_CSL331 = new BitSet(new long[]{0x0000000000000002L});
 
 }

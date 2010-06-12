@@ -11,6 +11,8 @@ package org.tykedog.csl.interpreter.statement;
 
 import java.util.List;
 
+import org.tykedog.csl.interpreter.CallStack;
+
 /**
  *
  */
@@ -24,11 +26,27 @@ public class BlockStatement extends Statement
 	private List<Statement> sl;
 
 	@Override
-	public StatementExecuteResult execute()
+	public StatementExecuteResult execute(CallStack callstack)
 	{
 		for(Statement s:sl)
 		{
-			s.execute();
+			StatementExecuteResult result = s.execute(callstack);
+			switch (result.type)
+			{
+				case RETURN:
+				{	
+					return result;
+				}
+				case BREAK:
+				case CONTINUE:
+				{
+					if(callstack.inLoopStatement > 0)
+					{
+						return result;
+					}
+					break;
+				}
+			}
 		}
 		return StatementExecuteResult.NEXT;
 	}

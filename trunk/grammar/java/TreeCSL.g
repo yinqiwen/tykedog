@@ -14,7 +14,11 @@ import org.tykedog.csl.interpreter.function.*;
 import org.tykedog.csl.interpreter.*;
 }
 
-language : ^(LANGUAGE statement* function*);
+language returns[CSL csl]
+:
+{csl = new CSL();} 
+^(LANGUAGE (statement{csl.addStatement($statement.stat);})* (function{csl.addFunction($function.func);})*)
+;
 
 function returns [Function func]
 @init {func = new Function();}
@@ -24,12 +28,28 @@ function returns [Function func]
 statement returns[Statement stat]
 	: 
     block{stat = $block.stat;}
-    |^('if' expression[stat] block (^('elif' expression[stat] block))* (^('else' block))?) 
-    | ^('while' expression[stat] block )
-    | 'return'
-    | 'break'
-    | 'continue'
-    | expression[stat]
+    |
+    {IfElseStatement ifElse = new IfElseStatement();}
+    ^('if' ifexpr=expression ifblock=block
+    {
+        ChoiceStatement ifChoice = new ChoiceStatement(ifexpr, ifblock);
+        ifElse.setIfStatement(ifChoice);
+    } 
+    (^('elif' elifexpr=expression elifblock=block)
+    {
+        ChoiceStatement elifChoice = new ChoiceStatement(elifexpr, elifblock);
+        ifElse.addElifStatement(elifChoice);
+    }
+    )* 
+    (^('else' elseblock=block{ifElse.setElseBlock(elseblock);}))?)  
+    | ^('while' expression block )
+    {
+        stat = new WhileStatement($expression.expr, $block.stat);
+    }
+    | ^('return'  expression?)
+    | 'break'{stat = new BreakStatement();}
+    | 'continue'{stat = new ContinueStatement();}
+    | expression {stat = new ExpressionStatement($expression.expr);}
 	;
 
 block returns[BlockStatement stat]
@@ -40,98 +60,98 @@ stat = new BlockStatement(sl);
 	:	
 	^('{' (s=statement{sl.add(s);})*);
 
-expression[Statement stat] returns[Expression expr]
+expression returns[Expression expr]
 @init {List<Expression> exprList = new ArrayList<Expression>();}
 	:	
-	^('=' opra=expression[stat] oprb=expression[stat])
+	^('=' opra=expression oprb=expression)
 	{
 	   $expr = new AssignExpression(opra, oprb, opra.getLine());
 	}
-	|^('+=' opra=expression[stat] oprb=expression[stat])
+	|^('+=' opra=expression oprb=expression)
 	{
 	   $expr = new PlusAssignExpression(opra, oprb, opra.getLine());
 	}
-	|^('-=' opra=expression[stat] oprb=expression[stat])
+	|^('-=' opra=expression oprb=expression)
 	{
 	   $expr = new MinusAssignExpression(opra, oprb, opra.getLine());
 	}
-	|^('*=' opra=expression[stat] oprb=expression[stat])
+	|^('*=' opra=expression oprb=expression)
 	{
 	   $expr = new MultiplyAssignExpression(opra, oprb, opra.getLine());
 	}
-	|^('/=' opra=expression[stat] oprb=expression[stat])
+	|^('/=' opra=expression oprb=expression)
 	{
 	   $expr = new DivideAssignExpression(opra, oprb, opra.getLine());
 	}
-	|^('%=' opra=expression[stat] oprb=expression[stat])
+	|^('%=' opra=expression oprb=expression)
 	{
 	   $expr = new ModAssignExpression(opra, oprb, opra.getLine());
 	}
-	|^('||' opra=expression[stat] oprb=expression[stat])
+	|^('||' opra=expression oprb=expression)
 	{
 	   $expr = new LogicOrExpression(opra, oprb, opra.getLine());
 	}
-	|^('&&' opra=expression[stat] oprb=expression[stat])
+	|^('&&' opra=expression oprb=expression)
 	{
 	   $expr = new LogicAndExpression(opra, oprb, opra.getLine());
 	}
-	|^('+' opra=expression[stat] oprb=expression[stat])
+	|^('+' opra=expression oprb=expression)
 	{
 	   $expr = new PlusExpression(opra, oprb, opra.getLine());
 	}
-	|^('-' opra=expression[stat] oprb=expression[stat])
+	|^('-' opra=expression oprb=expression)
 	{
 	   $expr = new MinusExpression(opra, oprb, opra.getLine());
 	}
-	|^('*' opra=expression[stat] oprb=expression[stat])
+	|^('*' opra=expression oprb=expression)
 	{
 	   $expr = new MultiplyExpression(opra, oprb, opra.getLine());
 	}
-	|^('/' opra=expression[stat] oprb=expression[stat])
+	|^('/' opra=expression oprb=expression)
 	{
 	   $expr = new DivideExpression(opra, oprb, opra.getLine());
 	}
-	|^('%' opra=expression[stat] oprb=expression[stat])
+	|^('%' opra=expression oprb=expression)
 	{
 	   $expr = new ModExpression(opra, oprb, opra.getLine());
 	}
-	|^('==' opra=expression[stat] oprb=expression[stat])
+	|^('==' opra=expression oprb=expression)
 	{
 	   $expr = new EqualExpression(opra, oprb, opra.getLine());
 	}
-	|^('~=' opra=expression[stat] oprb=expression[stat])
+	|^('~=' opra=expression oprb=expression)
 	{
 	   $expr = new MatchEqualExpression(opra, oprb, opra.getLine());
 	}
-	|^('!=' opra=expression[stat] oprb=expression[stat])
+	|^('!=' opra=expression oprb=expression)
 	{
 	   $expr = new NotEqualExpression(opra, oprb, opra.getLine());
 	}
-	|^('>=' opra=expression[stat] oprb=expression[stat])
+	|^('>=' opra=expression oprb=expression)
 	{
 	   $expr = new GreaterEqualThanExpression(opra, oprb, opra.getLine());
 	}
-	|^('<=' opra=expression[stat] oprb=expression[stat])
+	|^('<=' opra=expression oprb=expression)
 	{
 	   $expr = new LessEqualThanExpression(opra, oprb, opra.getLine());
 	}
-	|^('<' opra=expression[stat] oprb=expression[stat])
+	|^('<' opra=expression oprb=expression)
 	{
 	   $expr = new LessThanExpression(opra, oprb, opra.getLine());
 	}
-	|^('>' opra=expression[stat] oprb=expression[stat])
+	|^('>' opra=expression oprb=expression)
 	{
 	   $expr = new GreaterThanExpression(opra, oprb, opra.getLine());
 	}
-	|^('!' opr=expression[stat])
+	|^('!' opr=expression)
 	{
 	   $expr = new NotExpression(opr, opr.getLine());
 	}
-	|^('++' opr=expression[stat] )
+	|^('++' opr=expression )
 	{
 	   $expr = new IncreaseExpression(opr, opr.getLine());
 	}
-	|^('--' opr=expression[stat] )
+	|^('--' opr=expression )
 	{
 	   $expr = new DecreaseExpression(opr, opr.getLine());
 	}
@@ -139,7 +159,7 @@ expression[Statement stat] returns[Expression expr]
 	{
 	   $expr = new VarExpression($ID.text, $ID.line);
 	}
-	|^(INVOKE ID (opr=expression[stat]{exprList.add(opr);})*)
+	|^(INVOKE ID (opr=expression{exprList.add(opr);})*)
 	{
 	   $expr = new InvokeExpression($ID.text, exprList, $ID.line);
 	}
