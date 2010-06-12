@@ -1,6 +1,6 @@
 /**
  * This file is part of the tykedog project.
- * Copyright (c) 2010, BigBand Networks Inc. All rights reserved.
+ * Copyright (c) 2010, Yin QiWen <yinqiwen@gmail.com>. All rights reserved.
  *
  * Description: AssignExpression.java 
  *
@@ -8,6 +8,9 @@
  *
  */
 package org.tykedog.csl.interpreter.expression;
+
+import org.tykedog.csl.interpreter.CallStack;
+
 
 /**
  *
@@ -25,12 +28,12 @@ public class PlusAssignExpression extends Expression
 	}
 	
 	@Override
-	public Object execute()
+	public Object execute(CallStack callstack)
 	{
-		Object value = new PlusExpression(opra, oprb, line).execute();
+		Object value = new PlusExpression(opra, oprb, line).execute(callstack);
 		Expression opr = new ConstantExpression(value, line);
 		AssignExpression assign = new AssignExpression(opra, opr, line);
-		return assign.execute();
+		return assign.execute(callstack);
 	}
 
 }

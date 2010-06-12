@@ -12,7 +12,37 @@ package org.tykedog.csl.interpreter.statement;
 /**
  *
  */
-public enum StatementExecuteResult
+public class StatementExecuteResult
 {
-	NEXT,BREAK,CONTINE,RETURN
+	public static enum StatementExecuteResultType
+	{
+		NEXT, BREAK, CONTINUE, RETURN
+	}
+
+	private StatementExecuteResult(StatementExecuteResultType type,
+			Object attachment)
+	{
+		this.type = type;
+		this.attachment = attachment;
+	}
+
+	public final StatementExecuteResultType		type;
+	public final Object							attachment;
+
+	public static final StatementExecuteResult	NEXT		= new StatementExecuteResult(
+																	StatementExecuteResultType.NEXT,
+																	null);
+	public static final StatementExecuteResult	BREAK		= new StatementExecuteResult(
+																	StatementExecuteResultType.BREAK,
+																	null);
+	public static final StatementExecuteResult	CONTINUE	= new StatementExecuteResult(
+																	StatementExecuteResultType.CONTINUE,
+																	null);
+	
+	public static StatementExecuteResult returnResult(Object result)
+	{
+		return new StatementExecuteResult(
+				StatementExecuteResultType.RETURN,
+				result);
+	}
 }

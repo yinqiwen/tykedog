@@ -9,13 +9,28 @@
  */
 package org.tykedog.csl.interpreter.var;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  *
  */
 public class VariableManager
 {
+	private Map<String, Variable> vars = new ConcurrentHashMap<String, Variable>();
+	private VariableManager parent;
 	
-	public Variable createVariable(String name)
+	public VariableManager()
+	{
+		
+	}
+	
+	public VariableManager(VariableManager parent)
+	{
+		this.parent = parent;
+	}
+	
+	public Variable getVariable(String name)
 	{
 		return null;
 	}

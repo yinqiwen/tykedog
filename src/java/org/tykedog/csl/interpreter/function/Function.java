@@ -4,7 +4,7 @@
  *
  * Description: Function.java 
  *
- * @author yinqiwen [ 2010-6-10 | ÏÂÎç09:36:57 ]
+ * @author yinqiwen [ 2010-6-10 | 09:36:57 PM ]
  *
  */
 package org.tykedog.csl.interpreter.function;
@@ -12,7 +12,10 @@ package org.tykedog.csl.interpreter.function;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.tykedog.csl.interpreter.CallStack;
 import org.tykedog.csl.interpreter.statement.Statement;
+import org.tykedog.csl.interpreter.statement.StatementExecuteResult;
+import org.tykedog.csl.interpreter.statement.StatementExecuteResult.StatementExecuteResultType;
 
 /**
  *
@@ -22,6 +25,11 @@ public class Function
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+	
+	public String getName()
+	{
+		return this.name;
 	}
 	public void addArg(String arg)
 	{
@@ -36,12 +44,18 @@ public class Function
 	private List<Statement> stats = new ArrayList<Statement>();
 	
 	
-	public void execute(Object[] args)
+	public Object execute(Object[] args)
 	{
+		CallStack callstack = new CallStack();
 		for(Statement s:stats)
 		{
-			s.execute();
+			StatementExecuteResult result = s.execute(callstack);
+			if(result.type.equals(StatementExecuteResultType.RETURN))
+			{
+				return result.attachment;
+			}
 		}
+		return null;
 	}
 	
 }

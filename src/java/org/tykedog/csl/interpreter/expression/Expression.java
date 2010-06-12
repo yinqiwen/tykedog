@@ -1,6 +1,6 @@
 /**
  * This file is part of the tykedog project.
- * Copyright (c) 2010, BigBand Networks Inc. All rights reserved.
+ * Copyright (c) 2010, Yin QiWen <yinqiwen@gmail.com>. All rights reserved.
  *
  * Description: Expression.java 
  *
@@ -8,6 +8,8 @@
  *
  */
 package org.tykedog.csl.interpreter.expression;
+
+import org.tykedog.csl.interpreter.CallStack;
 
 /**
  *
@@ -26,5 +28,5 @@ public abstract class Expression
 		return line;
 	}
 	
-	public abstract Object execute();
+	public abstract Object execute(CallStack callstack);
 }

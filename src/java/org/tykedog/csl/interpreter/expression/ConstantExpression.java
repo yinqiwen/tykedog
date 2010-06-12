@@ -1,6 +1,6 @@
 /**
  * This file is part of the tykedog project.
- * Copyright (c) 2010, BigBand Networks Inc. All rights reserved.
+ * Copyright (c) 2010, Yin QiWen <yinqiwen@gmail.com>. All rights reserved.
  *
  * Description: ConstantExpression.java 
  *
@@ -8,6 +8,9 @@
  *
  */
 package org.tykedog.csl.interpreter.expression;
+
+import org.tykedog.csl.interpreter.CallStack;
+
 
 /**
  *
@@ -25,7 +28,7 @@ public class ConstantExpression extends Expression
 	 * @see org.tykedog.csl.interpreter.expression.Expression#execute()
 	 */
 	@Override
-	public Object execute()
+	public Object execute(CallStack callstack)
 	{
 		return value;
 	}

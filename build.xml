@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<project name="tykedog" default="dist">
+	<property name="root" value="." />
+
+	<property name='dist_jar' value='tykedog.jar' />
+	<property name="classes" value="${root}/build" />
+	<property name="distroot" value="${root}/dist" />
+	<property name="docdir" value="${root}/doc" />
+	<property name="lib" value="${root}/lib" />
+	<property name="srcroot" value="${root}/src/java" />
+	<property name="testroot" value="${root}/test" />
+	<property name="antlr_jar" value="${root}/lib/antlr-runtime-3.2.jar" />
+	<property name="version" value="0.1.1" />
+	<property name="release" value="release" />
+	<property name="project_name" value="hyk-util" />
+
+	<path id="classpath">
+		<pathelement location="${lib}/antlr-runtime-3.2.jar"/>
+	</path>
+
+	<target name="prepare">
+		<mkdir dir="${classes}"/>
+		<mkdir dir="${distroot}"/>
+	</target>
+
+	<target name="compile" depends="prepare">
+		<javac debug="on" target="1.5" source="1.5" srcdir="${srcroot}" destdir="${classes}" classpathref="classpath">
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile">
+		<copy todir="${classes}">
+			<fileset dir="${srcroot}">
+				<include name="**/*.xml"/>
+			</fileset>
+		</copy>
+		<jar destfile="${distroot}/${dist_jar}" basedir="${classes}"/>
+		<delete dir="${classes}"/>
+	</target>
+
+	<target name="release" depends="dist">
+
+	</target>
+</project>
