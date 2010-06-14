@@ -28,8 +28,10 @@ public class IncreaseExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Object value = opr.execute(callstack);
+		Object ret = callstack.calculator.increase(extractVarValue(value));
+		writeVar(value, ret);
+		return ret;
 	}
 
 }

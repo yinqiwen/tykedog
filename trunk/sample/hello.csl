@@ -1,9 +1,25 @@
 
-if($__URL__=="sasag" || $__METHOD__ == "GET")
+
+$MY_NAME="Tyke Dog";
+
+def check(opra, oprb)
 {
-   set proxy 
+   println("####INVOKED!");
+   return $opra > $oprb;
 }
-elif($__HEADER__[])
+
+def hello(opra, oprb)
 {
-  set proxy
+   if check($opra, $oprb)
+   {
+      println("hello, opra > oprb");
+   }
+   else
+   {
+      println("hello, opra < oprb \na");
+   }
+   
+    $x = 1+2+12;
+    println($x);
+    println($MY_NAME);
 }

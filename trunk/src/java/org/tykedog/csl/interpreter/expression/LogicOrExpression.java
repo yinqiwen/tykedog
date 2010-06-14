@@ -30,8 +30,9 @@ public class LogicOrExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Object a = opra.execute(callstack);
+		Object b = oprb.execute(callstack);
+		return callstack.calculator.logicOr(extractVarValue(a), extractVarValue(b));
 	}
 
 }

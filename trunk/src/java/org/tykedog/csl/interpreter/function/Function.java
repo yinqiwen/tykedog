@@ -12,6 +12,8 @@ package org.tykedog.csl.interpreter.function;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.tykedog.csl.api.InvokeCommand;
+import org.tykedog.csl.interpreter.CSL;
 import org.tykedog.csl.interpreter.CallStack;
 import org.tykedog.csl.interpreter.statement.Statement;
 import org.tykedog.csl.interpreter.statement.StatementExecuteResult;
@@ -20,7 +22,7 @@ import org.tykedog.csl.interpreter.statement.StatementExecuteResult.StatementExe
 /**
  *
  */
-public class Function
+public class Function implements InvokeCommand
 {
 	public void setName(String name)
 	{
@@ -37,16 +39,29 @@ public class Function
 	}
 	public void addStatment(Statement stat)
 	{
+		if(stat == null) return;
 		this.stats.add(stat);
 	}
+
+	public void setOwner(CSL csl)
+	{
+		this.csl = csl;
+	}
+
+	private CSL				csl;
 	private String name;
 	private List<String> args = new ArrayList<String>();
 	private List<Statement> stats = new ArrayList<Statement>();
 	
-	
-	public Object execute(Object[] args)
+	public Object execute(Object[] argValues)
 	{
-		CallStack callstack = new CallStack();
+		CallStack callstack = new CallStack(csl.getCalculator(), csl.getComparator());
+		callstack.setGlobalVarManager(csl.getGlobalVarManager());
+		callstack.setInvokeCommandTable(csl.getCommandTable());
+		for(int i = 0; i<args.size(); i++)
+		{
+			callstack.localVarManager.createVariable("$" + args.get(i), argValues[i]);
+		}
 		for(Statement s:stats)
 		{
 			StatementExecuteResult result = s.execute(callstack);

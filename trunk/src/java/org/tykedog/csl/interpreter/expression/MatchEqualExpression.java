@@ -30,8 +30,9 @@ public class MatchEqualExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Object a = opra.execute(callstack);
+		Object b = oprb.execute(callstack);
+		return callstack.comparator.match(extractVarValue(a), extractVarValue(b));
 	}
 
 }

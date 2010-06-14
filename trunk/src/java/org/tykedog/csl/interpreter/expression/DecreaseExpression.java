@@ -9,7 +9,6 @@
  */
 package org.tykedog.csl.interpreter.expression;
 
-import org.tykedog.csl.api.Calculator;
 import org.tykedog.csl.interpreter.CallStack;
 
 /**
@@ -17,7 +16,6 @@ import org.tykedog.csl.interpreter.CallStack;
  */
 public class DecreaseExpression extends Expression
 {
-	private Calculator calculator;
 	private Expression opr;
 	
 	public DecreaseExpression(Expression opr, int line)
@@ -29,7 +27,10 @@ public class DecreaseExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		return calculator.decrease(opr.execute(callstack));
+		Object value = opr.execute(callstack);
+		Object ret = callstack.calculator.decrease(extractVarValue(value));
+		writeVar(value, ret);
+		return ret;
 	}
 
 }

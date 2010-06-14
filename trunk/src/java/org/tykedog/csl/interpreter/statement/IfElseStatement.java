@@ -46,20 +46,17 @@ public class IfElseStatement extends Statement
 		{
 			return ifStatement.block.execute(callstack);
 		}
-		else
+		for(ChoiceStatement elif:elifStats)
 		{
-			for(ChoiceStatement elif:elifStats)
+			choice = (Boolean) elif.expression.execute(callstack);
+			if(choice)
 			{
-				choice = (Boolean) elif.expression.execute(callstack);
-				if(choice)
-				{
-					return elif.block.execute(callstack);
-				}
+				return elif.block.execute(callstack);
 			}
-			if(null != elseBlock)
-			{
-				return elseBlock.execute(callstack);
-			}
+		}
+		if(null != elseBlock)
+		{
+			return elseBlock.execute(callstack);
 		}
 		return StatementExecuteResult.NEXT;
 	}
