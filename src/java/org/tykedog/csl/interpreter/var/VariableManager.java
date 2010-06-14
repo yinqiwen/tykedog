@@ -18,20 +18,21 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VariableManager
 {
 	private Map<String, Variable> vars = new ConcurrentHashMap<String, Variable>();
-	private VariableManager parent;
-	
-	public VariableManager()
-	{
-		
-	}
-	
-	public VariableManager(VariableManager parent)
-	{
-		this.parent = parent;
-	}
 	
 	public Variable getVariable(String name)
 	{
-		return null;
+		return vars.get(name);
+	}
+	
+	public Variable createVariable(String name)
+	{
+		return createVariable(name, null);
+	}
+	
+	public Variable createVariable(String name, Object value)
+	{
+		Variable var = new Variable(name, value);
+		vars.put(name, var);
+		return var;
 	}
 }

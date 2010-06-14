@@ -10,6 +10,7 @@
 package org.tykedog.csl.interpreter.expression;
 
 import org.tykedog.csl.interpreter.CallStack;
+import org.tykedog.csl.interpreter.var.Variable;
 
 /**
  *
@@ -17,6 +18,23 @@ import org.tykedog.csl.interpreter.CallStack;
 public abstract class Expression
 {
 	protected int line;
+	
+	protected Object extractVarValue(Object value)
+	{
+		if(value instanceof Variable)
+		{
+			return ((Variable)value).getValue();
+		}
+		return value;
+	}
+	
+	protected void writeVar(Object var, Object value)
+	{
+		if(var instanceof Variable)
+		{
+			((Variable)var).setValue(value);
+		}
+	}
 	
 	protected Expression(int line)
 	{

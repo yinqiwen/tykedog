@@ -28,8 +28,8 @@ public class NotExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Object a = opr.execute(callstack);
+		return callstack.comparator.compare(extractVarValue(a), Boolean.FALSE) == 0;
 	}
 
 }

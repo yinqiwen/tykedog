@@ -11,27 +11,27 @@ package org.tykedog.csl.interpreter.expression;
 
 import org.tykedog.csl.interpreter.CallStack;
 
-
 /**
  *
  */
 public class ModExpression extends Expression
 {
-	private Expression opra;
-	private Expression oprb;
-	
+	private Expression	opra;
+	private Expression	oprb;
+
 	public ModExpression(Expression opra, Expression oprb, int line)
 	{
 		super(line);
 		this.opra = opra;
 		this.oprb = oprb;
 	}
-	
+
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Object a = opra.execute(callstack);
+		Object b = oprb.execute(callstack);
+		return callstack.calculator.mod(extractVarValue(a), extractVarValue(b));
 	}
 
 }

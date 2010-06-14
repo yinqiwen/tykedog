@@ -28,8 +28,7 @@ public class VarExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return callstack.getVariable(id);
 	}
 
 }

@@ -10,6 +10,7 @@
 package org.tykedog.csl.interpreter.expression;
 
 import org.tykedog.csl.interpreter.CallStack;
+import org.tykedog.csl.interpreter.var.Variable;
 
 /**
  *
@@ -29,8 +30,15 @@ public class AssignExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Object target = opra.execute(callstack);
+		if(target instanceof Variable)
+		{
+			Object value = extractVarValue(oprb.execute(callstack));
+			((Variable)target).setValue(value);
+			return value;
+		}
+		throw new IllegalStateException("Can not assign value to non var.");
+		
 	}
 
 }

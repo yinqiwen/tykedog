@@ -11,6 +11,7 @@ package org.tykedog.csl.interpreter.expression;
 
 import java.util.List;
 
+import org.tykedog.csl.api.InvokeCommand;
 import org.tykedog.csl.interpreter.CallStack;
 
 
@@ -29,14 +30,20 @@ public class InvokeExpression extends Expression
 		this.funcId = id;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.tykedog.csl.interpreter.expression.Expression#execute()
-	 */
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		InvokeCommand command = callstack.getInvokeCommandTable().getCommand(funcId);
+		Object[] argValues = null;
+		if(null != args)
+		{
+			argValues = new Object[args.size()];
+			for(int i = 0; i < argValues.length; i++)
+			{
+				argValues[i] = extractVarValue(args.get(i).execute(callstack));
+			}
+		}
+		return command.execute(argValues);
 	}
 
 }

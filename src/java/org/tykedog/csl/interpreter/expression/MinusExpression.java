@@ -30,8 +30,13 @@ public class MinusExpression extends Expression
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Object a = opra.execute(callstack);
+		if(null != oprb)
+		{
+			Object b = oprb.execute(callstack);
+			return callstack.calculator.sub(extractVarValue(a), extractVarValue(b));
+		}
+		return callstack.calculator.sub(0, extractVarValue(a));
 	}
 
 }

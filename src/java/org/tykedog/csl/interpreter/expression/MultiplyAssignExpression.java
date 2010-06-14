@@ -17,21 +17,19 @@ import org.tykedog.csl.interpreter.CallStack;
  */
 public class MultiplyAssignExpression extends Expression
 {
-	private Expression opra;
-	private Expression oprb;
+	private Expression composite;
 	
 	public MultiplyAssignExpression(Expression opra, Expression oprb, int line)
 	{
 		super(line);
-		this.opra = opra;
-		this.oprb = oprb;
+		MultiplyExpression multiply = new MultiplyExpression(opra, oprb, line);
+		composite = new AssignExpression(opra, multiply, line);
 	}
 	
 	@Override
 	public Object execute(CallStack callstack)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return composite.execute(callstack);
 	}
 
 }

@@ -20,16 +20,16 @@ language:	(statement|function)* -> ^(LANGUAGE statement* function*);
 
 function	:	'def' ID param '{' statement* '}' -> ^(FUNCTION ID param statement*); 
 
-param	:	'('(VAR(','VAR)*)?')' -> ^(PARAM VAR*);
+param	:	'('(ID(','ID)*)?')' -> ^(PARAM ID*);
 
 statement
 	:	
 	block 
 	| 'if' ifExpr=expression ifBlock=block ('elif' elifExpr=expression elifBlock=block)* ('else' elseBlock=block)?
-	 -> ^('if' $ifExpr $ifBlock ^('elif' $elifExpr $elifBlock)* ^('else' $elseBlock)?)
+	 -> ^('if' $ifExpr $ifBlock (^('elif' $elifExpr $elifBlock))* (^('else' $elseBlock))?)
 	| 'while'^ expression block
 	| 'break' ';'!
-	| 'continue' ';'!
+	| 'continue' ';'! 
 	| 'return' expression? ';' -> ^('return' expression?)
 	|  expression ';'!
 	;
@@ -144,7 +144,7 @@ FloatingPointLiteral
 	;
 
 StringLiteral
-    :  '"' ( EscapeSequence | ~('\\'|'"') )* '"'
+    :  '"' ( EscapeSequence | ~('"'|'\\'|'\n'|'\r') )* '"'
     ;
 
 fragment
@@ -152,7 +152,16 @@ Exponent : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
 fragment
 EscapeSequence
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+    :   '\\' ('b' 
+    |'t' 
+    |'n' 
+    |'f' 
+    |'r' 
+    |'\"'
+    |'\''
+    |'/' 
+    |'\\'
+    )
     |   UnicodeEscape
     |   OctalEscape
     ;
