@@ -19,7 +19,7 @@ public abstract class Expression
 {
 	protected int line;
 	
-	protected Object extractVarValue(Object value)
+	public static  Object extractVarValue(Object value)
 	{
 		if(value instanceof Variable)
 		{
@@ -28,7 +28,7 @@ public abstract class Expression
 		return value;
 	}
 	
-	protected void writeVar(Object var, Object value)
+	public static  void writeVar(Object var, Object value)
 	{
 		if(var instanceof Variable)
 		{

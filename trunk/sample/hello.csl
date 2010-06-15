@@ -19,6 +19,13 @@ def hello(opra, oprb)
       println("hello, opra < oprb \na");
    }
    
+   if $opra > 10
+   {
+       if $oprb >0 
+       {
+           println("eter here!");
+       }
+   }
     $x = 1+2+12;
     println($x);
     println($MY_NAME);
