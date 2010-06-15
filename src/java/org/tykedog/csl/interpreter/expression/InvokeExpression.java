@@ -34,6 +34,10 @@ public class InvokeExpression extends Expression
 	public Object execute(CallStack callstack)
 	{
 		InvokeCommand command = callstack.getInvokeCommandTable().getCommand(funcId);
+		if(null == command)
+		{
+			throw new IllegalArgumentException("No such function or command" + funcId + " defined.");
+		}
 		Object[] argValues = null;
 		if(null != args)
 		{

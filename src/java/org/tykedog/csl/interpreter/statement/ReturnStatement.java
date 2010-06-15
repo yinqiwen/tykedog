@@ -34,7 +34,7 @@ public class ReturnStatement extends Statement
 		{
 			result = expr.execute(callstack);
 		}
-		return StatementExecuteResult.returnResult(result);
+		return StatementExecuteResult.returnResult(Expression.extractVarValue(result));
 	}
 
 }
